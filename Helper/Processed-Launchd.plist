@@ -4,7 +4,14 @@
 <dict>
 	<key>Label</key>
 	<string>com.elegantchaos.helper.helper</string>
-	<key>RunAtLoad</key>
+	<key>ServiceIPC</key>
 	<true/>
+	<key>OnDemand</key>
+	<true/>
+	<key>MachServices</key>
+	<dict>
+		<key>com.elegantchaos.helper.helper</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

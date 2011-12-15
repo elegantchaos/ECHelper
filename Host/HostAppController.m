@@ -194,6 +194,11 @@
         {
             NSLog(@"%@ server: could not find server.  You need to start one on this machine first.\n", name);
         }
+        else
+        {
+            [self.connection setRequestTimeout:10.0];
+            [self.connection setReplyTimeout:10.0];
+        }
     }
 
     if (self.connection)

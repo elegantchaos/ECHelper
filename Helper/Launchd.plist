@@ -4,7 +4,14 @@
 <dict>
 	<key>Label</key>
 	<string>${HELPER_ID}</string>
-	<key>RunAtLoad</key>
+	<key>ServiceIPC</key>
 	<true/>
+	<key>OnDemand</key>
+	<true/>
+	<key>MachServices</key>
+	<dict>
+		<key>${HELPER_ID}</key>
+		<true/>
+	</dict>
 </dict>
 </plist>
