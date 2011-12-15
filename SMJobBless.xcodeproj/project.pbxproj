@@ -261,8 +261,12 @@
 			files = (
 			);
 			inputPaths = (
+				"SMJobBlessHelper/SMJobBlessHelper-Info.plist",
+				"SMJobBlessHelper/SMJobBlessHelper-Launchd.plist",
 			);
 			outputPaths = (
+				"SMJobBlessHelper/Processed-Info.plist",
+				"SMJobBlessHelper/Processed-Launchd.plist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
