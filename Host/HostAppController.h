@@ -9,11 +9,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface HostAppController : NSObject 
+@interface HostAppController : NSObject<NSApplicationDelegate>
 
 @property (nonatomic, assign) IBOutlet NSTextField* label;
-
-- (BOOL)blessHelperWithLabel:(NSString *)label error:(NSError **)error;
 
 - (IBAction)sendToHelper:(id)sender;
 
