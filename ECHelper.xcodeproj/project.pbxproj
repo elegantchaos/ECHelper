@@ -11,7 +11,7 @@
 		4BE4906110445E13006BE471 /* Helper.c in Sources */ = {isa = PBXBuildFile; fileRef = 4BE4905510445DDD006BE471 /* Helper.c */; };
 		4BE4906410445F2F006BE471 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE4906310445F2F006BE471 /* Security.framework */; };
 		4BE4906810445F36006BE471 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE4906710445F36006BE471 /* ServiceManagement.framework */; };
-		4BE49092104463A0006BE471 /* com.elegantchaos.neu.helper in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4BE4905D10445E0A006BE471 /* com.elegantchaos.neu.helper */; };
+		4BE49092104463A0006BE471 /* com.elegantchaos.helper.helper in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4BE4905D10445E0A006BE471 /* com.elegantchaos.helper.helper */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		BF04235611C0531400431286 /* HostAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF04235511C0531400431286 /* HostAppController.m */; };
 		BF65C19111B985C0007C20AB /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF65C19011B985C0007C20AB /* MainMenu.xib */; };
@@ -43,7 +43,7 @@
 			dstPath = Contents/Library/LaunchServices;
 			dstSubfolderSpec = 1;
 			files = (
-				4BE49092104463A0006BE471 /* com.elegantchaos.neu.helper in CopyFiles */,
+				4BE49092104463A0006BE471 /* com.elegantchaos.helper.helper in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,7 +63,7 @@
 		4BE4905310445DDD006BE471 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Helper/Info.plist; sourceTree = "<group>"; };
 		4BE4905410445DDD006BE471 /* Launchd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Launchd.plist; path = ../Helper/Launchd.plist; sourceTree = "<group>"; };
 		4BE4905510445DDD006BE471 /* Helper.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Helper.c; sourceTree = "<group>"; };
-		4BE4905D10445E0A006BE471 /* com.elegantchaos.neu.helper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = com.elegantchaos.neu.helper; sourceTree = BUILT_PRODUCTS_DIR; };
+		4BE4905D10445E0A006BE471 /* com.elegantchaos.helper.helper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = com.elegantchaos.helper.helper; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BE4906310445F2F006BE471 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		4BE4906710445F36006BE471 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		8D1107320486CEB800E47090 /* host.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = host.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,7 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				8D1107320486CEB800E47090 /* host.app */,
-				4BE4905D10445E0A006BE471 /* com.elegantchaos.neu.helper */,
+				4BE4905D10445E0A006BE471 /* com.elegantchaos.helper.helper */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -196,7 +196,7 @@
 			);
 			name = helper;
 			productName = SMJobBlessHelper;
-			productReference = 4BE4905D10445E0A006BE471 /* com.elegantchaos.neu.helper */;
+			productReference = 4BE4905D10445E0A006BE471 /* com.elegantchaos.helper.helper */;
 			productType = "com.apple.product-type.tool";
 		};
 		8D1107260486CEB800E47090 /* host */ = {
@@ -400,9 +400,9 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HELPER_ID = com.elegantchaos.neu.helper;
+				HELPER_ID = com.elegantchaos.helper.helper;
 				HELPER_SIGNING = "3rd Party Mac Developer Application: Sam Deane";
-				HOST_ID = com.elegantchaos.neu.installer;
+				HOST_ID = com.elegantchaos.helper.host;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
@@ -417,9 +417,9 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HELPER_ID = com.elegantchaos.neu.helper;
+				HELPER_ID = com.elegantchaos.helper.helper;
 				HELPER_SIGNING = "3rd Party Mac Developer Application: Sam Deane";
-				HOST_ID = com.elegantchaos.neu.installer;
+				HOST_ID = com.elegantchaos.helper.host;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 			};
