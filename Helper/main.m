@@ -1,3 +1,12 @@
+// --------------------------------------------------------------------------
+//! @author Sam Deane
+//! @date 15/12/2011
+//
+//  Copyright 2011 Sam Deane, Elegant Chaos. All rights reserved.
+//  This source code is distributed under the terms of Elegant Chaos's 
+//  liberal license: http://www.elegantchaos.com/license/liberal
+// --------------------------------------------------------------------------
+
 #include <syslog.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -6,29 +15,16 @@
 
 #import <Foundation/Foundation.h>
 
-//#define SIMPLE
-#ifdef SIMPLE
-
 int main(int argc, const char * argv[])
 {
-	syslog(LOG_NOTICE, "Hello world! uid = %d, euid = %d, pid = %d\n", getuid(), geteuid(), getpid());
-	
-	sleep(10);
-	
-	return 0;
-}
-
-#else
-
-int main(int argc, const char * argv[])
-{
-	syslog(LOG_NOTICE, "helper starting! uid = %d, euid = %d, pid = %d\n", getuid(), geteuid(), getpid());
     @autoreleasepool
     {
         NSConnection* server = [[NSConnection alloc] init];
         Helper* helper = [[Helper alloc] init];
         [server setRootObject:helper];
-        
+
+        syslog(LOG_NOTICE, "helper starting! uid = %d, euid = %d, pid = %d\n", helper.uid, helper.euid, helper.pid);
+
         NSString* name = [[NSBundle mainBundle] bundleIdentifier];
         if ([server registerName:name] == NO)
         {
@@ -46,5 +42,3 @@ int main(int argc, const char * argv[])
     
     return 0;
 }
-
-#endif
