@@ -1,7 +1,7 @@
 About ECHelper
 ==============
 
-This is based on apple's SMJobBless example, which shows how to cleanly install a helper tool that needs to run with privileges as a launchd task.
+This is based on Apple's SMJobBless example, which shows how to cleanly install a helper tool that needs to run with privileges as a launchd task.
 
 The original SMJobBless sample is available from http://developer.apple.com/library/mac/#samplecode/SMJobBless/Introduction/Intro.html
 
