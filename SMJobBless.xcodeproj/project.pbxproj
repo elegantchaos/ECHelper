@@ -63,7 +63,7 @@
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		224E7D92149A26C60063A520 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		224E7DA2149A27910063A520 /* dummy bundle.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "dummy bundle.bundle"; path = dummy.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		224E7DA2149A27910063A520 /* dummy.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dummy.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		224E7DA6149A27910063A520 /* dummy bundle-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "dummy bundle-Info.plist"; sourceTree = "<group>"; };
 		224E7DA8149A27910063A520 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		224E7DAA149A27910063A520 /* dummy bundle-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "dummy bundle-Prefix.pch"; sourceTree = "<group>"; };
@@ -138,7 +138,7 @@
 			children = (
 				8D1107320486CEB800E47090 /* SMJobBlessApp.app */,
 				4BE4905D10445E0A006BE471 /* com.elegantchaos.neu */,
-				224E7DA2149A27910063A520 /* dummy bundle.bundle */,
+				224E7DA2149A27910063A520 /* dummy.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -231,7 +231,7 @@
 			);
 			name = dummy;
 			productName = "dummy bundle";
-			productReference = 224E7DA2149A27910063A520 /* dummy bundle.bundle */;
+			productReference = 224E7DA2149A27910063A520 /* dummy.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		4BE4905C10445E0A006BE471 /* com.elegantchaos.neu */ = {
@@ -503,6 +503,8 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HELPER_ID = com.elegantchaos.neu;
+				HELPER_SIGNING = "3rd Party Mac Developer Application: Sam Deane";
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "1CEA1360-4354-4BFE-8DDD-7EFE5FB0661D";
 				SDKROOT = macosx;
@@ -517,6 +519,8 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HELPER_ID = com.elegantchaos.neu;
+				HELPER_SIGNING = "3rd Party Mac Developer Application: Sam Deane";
 				PROVISIONING_PROFILE = "1CEA1360-4354-4BFE-8DDD-7EFE5FB0661D";
 				SDKROOT = macosx;
 			};

@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.elegantchaos.neu</string>
+	<string>${HELPER_ID}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
@@ -23,7 +23,7 @@
 	<key>SMPrivilegedExecutables</key>
 	<dict>
 		<key>com.elegantchaos.neu</key>
-		<string>identifier com.elegantchaos.neu and certificate leaf[subject.CN] = &quot;3rd Party Mac Developer Application: Sam Deane&quot;</string>
+		<string>identifier ${HELPER_ID} and certificate leaf[subject.CN] = &quot;${HELPER_SIGNING}&quot;</string>
 	</dict>
 </dict>
 </plist>
