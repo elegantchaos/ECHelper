@@ -11,7 +11,7 @@
 		4BE4906110445E13006BE471 /* SMJobBlessHelper.c in Sources */ = {isa = PBXBuildFile; fileRef = 4BE4905510445DDD006BE471 /* SMJobBlessHelper.c */; };
 		4BE4906410445F2F006BE471 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE4906310445F2F006BE471 /* Security.framework */; };
 		4BE4906810445F36006BE471 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE4906710445F36006BE471 /* ServiceManagement.framework */; };
-		4BE49092104463A0006BE471 /* com.elegantchaos.neu in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4BE4905D10445E0A006BE471 /* com.elegantchaos.neu */; };
+		4BE49092104463A0006BE471 /* com.elegantchaos.neu.helper in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4BE4905D10445E0A006BE471 /* com.elegantchaos.neu.helper */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		BF04235611C0531400431286 /* SMJobBlessAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF04235511C0531400431286 /* SMJobBlessAppController.m */; };
 		BF65C19111B985C0007C20AB /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF65C19011B985C0007C20AB /* MainMenu.xib */; };
@@ -43,7 +43,7 @@
 			dstPath = Contents/Library/LaunchServices;
 			dstSubfolderSpec = 1;
 			files = (
-				4BE49092104463A0006BE471 /* com.elegantchaos.neu in CopyFiles */,
+				4BE49092104463A0006BE471 /* com.elegantchaos.neu.helper in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,7 +63,7 @@
 		4BE4905310445DDD006BE471 /* SMJobBlessHelper-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SMJobBlessHelper-Info.plist"; sourceTree = "<group>"; };
 		4BE4905410445DDD006BE471 /* SMJobBlessHelper-Launchd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SMJobBlessHelper-Launchd.plist"; sourceTree = "<group>"; };
 		4BE4905510445DDD006BE471 /* SMJobBlessHelper.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = SMJobBlessHelper.c; sourceTree = "<group>"; };
-		4BE4905D10445E0A006BE471 /* com.elegantchaos.neu */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = com.elegantchaos.neu; sourceTree = BUILT_PRODUCTS_DIR; };
+		4BE4905D10445E0A006BE471 /* com.elegantchaos.neu.helper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = com.elegantchaos.neu.helper; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BE4906310445F2F006BE471 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		4BE4906710445F36006BE471 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		8D1107320486CEB800E47090 /* SMJobBlessApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SMJobBlessApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,7 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				8D1107320486CEB800E47090 /* SMJobBlessApp.app */,
-				4BE4905D10445E0A006BE471 /* com.elegantchaos.neu */,
+				4BE4905D10445E0A006BE471 /* com.elegantchaos.neu.helper */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -179,9 +179,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4BE4905C10445E0A006BE471 /* com.elegantchaos.neu */ = {
+		4BE4905C10445E0A006BE471 /* helper */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4BE4906210445E31006BE471 /* Build configuration list for PBXNativeTarget "com.elegantchaos.neu" */;
+			buildConfigurationList = 4BE4906210445E31006BE471 /* Build configuration list for PBXNativeTarget "helper" */;
 			buildPhases = (
 				222B290A149A3EC600DF7EB2 /* ShellScript */,
 				224E7D89149A25200063A520 /* CopyFiles */,
@@ -192,9 +192,9 @@
 			);
 			dependencies = (
 			);
-			name = com.elegantchaos.neu;
+			name = helper;
 			productName = SMJobBlessHelper;
-			productReference = 4BE4905D10445E0A006BE471 /* com.elegantchaos.neu */;
+			productReference = 4BE4905D10445E0A006BE471 /* com.elegantchaos.neu.helper */;
 			productType = "com.apple.product-type.tool";
 		};
 		8D1107260486CEB800E47090 /* SMJobBlessApp */ = {
@@ -238,7 +238,7 @@
 			projectRoot = "";
 			targets = (
 				8D1107260486CEB800E47090 /* SMJobBlessApp */,
-				4BE4905C10445E0A006BE471 /* com.elegantchaos.neu */,
+				4BE4905C10445E0A006BE471 /* helper */,
 			);
 		};
 /* End PBXProject section */
@@ -312,7 +312,7 @@
 /* Begin PBXTargetDependency section */
 		4BE4907F1044624F006BE471 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4BE4905C10445E0A006BE471 /* com.elegantchaos.neu */;
+			target = 4BE4905C10445E0A006BE471 /* helper */;
 			targetProxy = 4BE4907E1044624F006BE471 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -339,7 +339,7 @@
 					__launchd_plist,
 					"SMJobBlessHelper/Processed-Launchd.plist",
 				);
-				PRODUCT_NAME = com.elegantchaos.neu;
+				PRODUCT_NAME = "${HELPER_ID}";
 			};
 			name = Debug;
 		};
@@ -364,7 +364,7 @@
 					__launchd_plist,
 					"SMJobBlessHelper/Processed-Launchd.plist",
 				);
-				PRODUCT_NAME = com.elegantchaos.neu;
+				PRODUCT_NAME = "${HELPER_ID}";
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -430,7 +430,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4BE4906210445E31006BE471 /* Build configuration list for PBXNativeTarget "com.elegantchaos.neu" */ = {
+		4BE4906210445E31006BE471 /* Build configuration list for PBXNativeTarget "helper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4BE4905F10445E0B006BE471 /* Debug */,

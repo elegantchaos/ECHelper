@@ -7,7 +7,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>${HELPER_NAME}</string>
+	<string>${HELPER_ID}</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>SMAuthorizedClients</key>
