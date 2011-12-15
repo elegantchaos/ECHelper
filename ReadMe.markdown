@@ -1,5 +1,5 @@
-Read Me About ECHelper
-======================
+About ECHelper
+==============
 
 This is based on apple's SMJobBless example, which shows how to cleanly install a helper tool that needs to run with privileges as a launchd task.
 
