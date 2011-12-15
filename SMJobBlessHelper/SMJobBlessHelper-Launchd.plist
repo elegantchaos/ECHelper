@@ -3,6 +3,6 @@
 <plist version="1.0">
 <dict>
 	<key>Label</key>
-	<string>com.elegantchaos.neu</string>
+	<string>${HELPER_ID}</string>
 </dict>
 </plist>

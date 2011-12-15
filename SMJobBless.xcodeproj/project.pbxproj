@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		224E7DA3149A27910063A520 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 224E7D92149A26C60063A520 /* CoreFoundation.framework */; };
-		224E7DA9149A27910063A520 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 224E7DA7149A27910063A520 /* InfoPlist.strings */; };
-		224E7DB8149A28000063A520 /* dummy bundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 224E7DB7149A28000063A520 /* dummy bundle.m */; };
 		4BE4905110445D49006BE471 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE4904D10445D49006BE471 /* main.m */; };
 		4BE4906110445E13006BE471 /* SMJobBlessHelper.c in Sources */ = {isa = PBXBuildFile; fileRef = 4BE4905510445DDD006BE471 /* SMJobBlessHelper.c */; };
 		4BE4906410445F2F006BE471 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE4906310445F2F006BE471 /* Security.framework */; };
@@ -21,13 +18,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		224E7DB9149A28A20063A520 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 224E7DA1149A27910063A520;
-			remoteInfo = dummy;
-		};
 		4BE4907E1044624F006BE471 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
@@ -63,11 +53,6 @@
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		224E7D92149A26C60063A520 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		224E7DA2149A27910063A520 /* dummy.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dummy.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		224E7DA6149A27910063A520 /* dummy bundle-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "dummy bundle-Info.plist"; sourceTree = "<group>"; };
-		224E7DA8149A27910063A520 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		224E7DAA149A27910063A520 /* dummy bundle-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "dummy bundle-Prefix.pch"; sourceTree = "<group>"; };
-		224E7DB7149A28000063A520 /* dummy bundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "dummy bundle.m"; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		4BE4904C10445D49006BE471 /* SMJobBlessApp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SMJobBlessApp-Info.plist"; sourceTree = "<group>"; };
@@ -85,14 +70,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		224E7D9F149A27910063A520 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				224E7DA3149A27910063A520 /* CoreFoundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		4BE4905B10445E0A006BE471 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -138,28 +115,8 @@
 			children = (
 				8D1107320486CEB800E47090 /* SMJobBlessApp.app */,
 				4BE4905D10445E0A006BE471 /* com.elegantchaos.neu */,
-				224E7DA2149A27910063A520 /* dummy.bundle */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		224E7DA4149A27910063A520 /* dummy bundle */ = {
-			isa = PBXGroup;
-			children = (
-				224E7DA5149A27910063A520 /* Supporting Files */,
-			);
-			path = "dummy bundle";
-			sourceTree = "<group>";
-		};
-		224E7DA5149A27910063A520 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				224E7DA6149A27910063A520 /* dummy bundle-Info.plist */,
-				224E7DA7149A27910063A520 /* InfoPlist.strings */,
-				224E7DAA149A27910063A520 /* dummy bundle-Prefix.pch */,
-				224E7DB7149A28000063A520 /* dummy bundle.m */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		29B97314FDCFA39411CA2CEA /* SMJobBless */ = {
@@ -168,7 +125,6 @@
 				4BE4905210445DDD006BE471 /* SMJobBlessHelper */,
 				4BE4904710445D49006BE471 /* SMJobBlessApp */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
-				224E7DA4149A27910063A520 /* dummy bundle */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -217,27 +173,11 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		224E7DA1149A27910063A520 /* dummy */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 224E7DAB149A27910063A520 /* Build configuration list for PBXNativeTarget "dummy" */;
-			buildPhases = (
-				224E7D9E149A27910063A520 /* Sources */,
-				224E7D9F149A27910063A520 /* Frameworks */,
-				224E7DA0149A27910063A520 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = dummy;
-			productName = "dummy bundle";
-			productReference = 224E7DA2149A27910063A520 /* dummy.bundle */;
-			productType = "com.apple.product-type.bundle";
-		};
 		4BE4905C10445E0A006BE471 /* com.elegantchaos.neu */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4BE4906210445E31006BE471 /* Build configuration list for PBXNativeTarget "com.elegantchaos.neu" */;
 			buildPhases = (
+				222B290A149A3EC600DF7EB2 /* ShellScript */,
 				224E7D89149A25200063A520 /* CopyFiles */,
 				4BE4905A10445E0A006BE471 /* Sources */,
 				4BE4905B10445E0A006BE471 /* Frameworks */,
@@ -245,7 +185,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				224E7DBA149A28A20063A520 /* PBXTargetDependency */,
 			);
 			name = com.elegantchaos.neu;
 			productName = SMJobBlessHelper;
@@ -293,20 +232,11 @@
 			targets = (
 				8D1107260486CEB800E47090 /* SMJobBlessApp */,
 				4BE4905C10445E0A006BE471 /* com.elegantchaos.neu */,
-				224E7DA1149A27910063A520 /* dummy */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		224E7DA0149A27910063A520 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				224E7DA9149A27910063A520 /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8D1107290486CEB800E47090 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -317,15 +247,23 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXSourcesBuildPhase section */
-		224E7D9E149A27910063A520 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
+/* Begin PBXShellScriptBuildPhase section */
+		222B290A149A3EC600DF7EB2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				224E7DB8149A28000063A520 /* dummy bundle.m in Sources */,
+			);
+			inputPaths = (
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cat \"SMJobBlessHelper/SMJobBlessHelper-Info.plist\" | sed -e \"s/\\${HELPER_ID}/${HELPER_ID}/\" | sed -e \"s/\\${HELPER_SIGNING}/${HELPER_SIGNING}/\" > \"${CONFIGURATION_TEMP_DIR}/info.plist\"\n\ncat \"SMJobBlessHelper/SMJobBlessHelper-Launchd.plist\" | sed -e \"s/\\${HELPER_ID}/${HELPER_ID}/\" | sed -e \"s/\\${HELPER_SIGNING}/${HELPER_SIGNING}/\" > \"${CONFIGURATION_TEMP_DIR}/launch.plist\"\n\ncat \"${CONFIGURATION_TEMP_DIR}/info.plist\"\ncat \"${CONFIGURATION_TEMP_DIR}/launch.plist\"\n";
 		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
 		4BE4905A10445E0A006BE471 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -346,11 +284,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		224E7DBA149A28A20063A520 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 224E7DA1149A27910063A520 /* dummy */;
-			targetProxy = 224E7DB9149A28A20063A520 /* PBXContainerItemProxy */;
-		};
 		4BE4907F1044624F006BE471 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4BE4905C10445E0A006BE471 /* com.elegantchaos.neu */;
@@ -358,65 +291,7 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		224E7DA7149A27910063A520 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				224E7DA8149A27910063A520 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		224E7DAC149A27910063A520 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "dummy bundle/dummy bundle-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				INFOPLIST_FILE = "SMJobBlessHelper/SMJobBlessHelper-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		224E7DAD149A27910063A520 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "dummy bundle/dummy bundle-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
-				INFOPLIST_FILE = "SMJobBlessHelper/SMJobBlessHelper-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
 		4BE4905F10445E0B006BE471 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -432,11 +307,11 @@
 					"-sectcreate",
 					__TEXT,
 					__info_plist,
-					"$(CONFIGURATION_BUILD_DIR)/dummy.bundle/Contents/Info.plist",
+					"$(CONFIGURATION_TEMP_DIR)/info.plist",
 					"-sectcreate",
 					__TEXT,
 					__launchd_plist,
-					"SMJobBlessHelper/SMJobBlessHelper-Launchd.plist",
+					"$(CONFIGURATION_TEMP_DIR)/launch.plist",
 				);
 				PRODUCT_NAME = com.elegantchaos.neu;
 			};
@@ -457,11 +332,11 @@
 					"-sectcreate",
 					__TEXT,
 					__info_plist,
-					"$(CONFIGURATION_BUILD_DIR)/dummy.bundle/Contents/Info.plist",
+					"$(CONFIGURATION_TEMP_DIR)/info.plist",
 					"-sectcreate",
 					__TEXT,
 					__launchd_plist,
-					"SMJobBlessHelper/SMJobBlessHelper-Launchd.plist",
+					"$(CONFIGURATION_TEMP_DIR)/launch.plist",
 				);
 				PRODUCT_NAME = com.elegantchaos.neu;
 				ZERO_LINK = NO;
@@ -529,15 +404,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		224E7DAB149A27910063A520 /* Build configuration list for PBXNativeTarget "dummy" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				224E7DAC149A27910063A520 /* Debug */,
-				224E7DAD149A27910063A520 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		4BE4906210445E31006BE471 /* Build configuration list for PBXNativeTarget "com.elegantchaos.neu" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
