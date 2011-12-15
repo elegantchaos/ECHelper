@@ -50,7 +50,7 @@ Copyright (C) 2011 Apple Inc. All Rights Reserved.
 
 #import <ServiceManagement/ServiceManagement.h>
 #import <Security/Authorization.h>
-#import "SMJobBlessAppController.h"
+#import "ECBlessAppController.h"
 
 @implementation SMJobBlessAppController
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
