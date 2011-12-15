@@ -12,7 +12,7 @@
 	<string>1.0</string>
 	<key>SMAuthorizedClients</key>
 	<array>
-		<string>identifier com.elegantchaos.neu.test and certificate leaf[subject.CN] = &quot;${HELPER_SIGNING}&quot;</string>
+		<string>identifier ${INSTALLER_ID} and certificate leaf[subject.CN] = &quot;${HELPER_SIGNING}&quot;</string>
 	</array>
 </dict>
 </plist>

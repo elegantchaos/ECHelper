@@ -270,7 +270,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cat \"SMJobBlessHelper/SMJobBlessHelper-Info.plist\" | sed -e \"s/\\${HELPER_ID}/${HELPER_ID}/\" | sed -e \"s/\\${HELPER_SIGNING}/${HELPER_SIGNING}/\" > \"SMJobBlessHelper/Processed-Info.plist\"\n\ncat \"SMJobBlessHelper/SMJobBlessHelper-Launchd.plist\" | sed -e \"s/\\${HELPER_ID}/${HELPER_ID}/\" | sed -e \"s/\\${HELPER_SIGNING}/${HELPER_SIGNING}/\" > \"SMJobBlessHelper/Processed-Launchd.plist\"\n";
+			shellScript = "cat \"SMJobBlessHelper/SMJobBlessHelper-Info.plist\" | sed -e \"s/\\${HELPER_ID}/${HELPER_ID}/\" | sed -e \"s/\\${HELPER_SIGNING}/${HELPER_SIGNING}/\" | sed -e \"s/\\${INSTALLER_ID}/${INSTALLER_ID}/\" > \"SMJobBlessHelper/Processed-Info.plist\"\n\ncat \"SMJobBlessHelper/SMJobBlessHelper-Launchd.plist\" | sed -e \"s/\\${HELPER_ID}/${HELPER_ID}/\" | sed -e \"s/\\${HELPER_SIGNING}/${HELPER_SIGNING}/\" > \"SMJobBlessHelper/Processed-Launchd.plist\"\n";
 		};
 		222B290B149A5F2600DF7EB2 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -406,6 +406,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HELPER_ID = com.elegantchaos.neu.helper;
 				HELPER_SIGNING = "3rd Party Mac Developer Application: Sam Deane";
+				INSTALLER_ID = com.elegantchaos.neu.installer;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
@@ -422,6 +423,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HELPER_ID = com.elegantchaos.neu.helper;
 				HELPER_SIGNING = "3rd Party Mac Developer Application: Sam Deane";
+				INSTALLER_ID = com.elegantchaos.neu.installer;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 			};
