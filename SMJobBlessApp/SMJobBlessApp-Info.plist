@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.apple.bsd.SMJobBlessApp</string>
+	<string>com.elegantchaos.neu</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
@@ -22,8 +22,8 @@
 	<string>NSApplication</string>
 	<key>SMPrivilegedExecutables</key>
 	<dict>
-		<key>com.apple.bsd.SMJobBlessHelper</key>
-		<string>identifier com.apple.bsd.SMJobBlessHelper and certificate leaf[subject.CN] = &quot;${CODE_SIGN_IDENTITY}&quot;</string>
+		<key>com.elegantchaos.neu</key>
+		<string>identifier com.elegantchaos.neu and certificate leaf[subject.CN] = &quot;3rd Party Mac Developer Application: Sam Deane&quot;</string>
 	</dict>
 </dict>
 </plist>

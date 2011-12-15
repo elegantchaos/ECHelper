@@ -56,7 +56,7 @@ Copyright (C) 2011 Apple Inc. All Rights Reserved.
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
 	NSError *error = nil;
-	if (![self blessHelperWithLabel:@"com.apple.bsd.SMJobBlessHelper" error:&error]) {
+	if (![self blessHelperWithLabel:@"com.elegantchaos.neu" error:&error]) {
 		NSLog(@"Something went wrong!");
 	} else {
 		/* At this point, the job is available. However, this is a very
