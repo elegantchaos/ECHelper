@@ -4,5 +4,7 @@
 <dict>
 	<key>Label</key>
 	<string>com.elegantchaos.helper.helper</string>
+	<key>RunAtLoad</key>
+	<true/>
 </dict>
 </plist>

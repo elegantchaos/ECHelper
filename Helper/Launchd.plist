@@ -4,5 +4,7 @@
 <dict>
 	<key>Label</key>
 	<string>${HELPER_ID}</string>
+	<key>RunAtLoad</key>
+	<true/>
 </dict>
 </plist>

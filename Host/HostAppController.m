@@ -1,7 +1,9 @@
 
 #import <ServiceManagement/ServiceManagement.h>
 #import <Security/Authorization.h>
+
 #import "HostAppController.h"
+#import "Helper.h"
 
 @implementation HostAppController
 
@@ -59,4 +61,48 @@
 	
 	return result;
 }
+
+- (IBAction)sendToHelper:(id)sender
+{
+    // Create an Authenticator object to authenticate messages going
+    // to the server.  The client and server need to use the same
+    // authentication logic, but would not need to use the same class.
+    Helper* helper = [[Helper alloc] init];
+    NSDistantObject *proxy;
+    
+    // Lookup the server connection
+    NSString* name = @"com.elegantchaos.helper.helper";
+    NSConnection *conn = [NSConnection connectionWithRegisteredName:name host:nil];
+    if (!conn) {
+        NSLog(@"%@ server: could not find server.  You need to start one on this machine first.\n", name);
+        exit(1);
+    }
+    
+    // Set the authenticator as the NSConnection delegate; all 
+    // further messages, including the first one to lookup the root 
+    // proxy, will go through the authenticator.
+    [conn setDelegate:helper];
+    
+    proxy = [conn rootProxy];
+    
+    if (!proxy) {
+        NSLog(@"%@ server: could not get proxy.  This should not happen.\n", name);
+        exit(1);
+    }
+    
+    // Since this is an example, we don't really care what the "served" 
+    // object really does, just that we can message it.  Since it is just
+    // an NSObject, send it some NSObject messages.  If these aren't
+    // authenticated successfully, an NSFailedAuthenticationException
+    // exception is raised.
+    
+    NSLog(@"description: %@", [proxy description]);
+    NSLog(@"isKindOfClass NSObject? %@", [proxy isKindOfClass:[NSObject self]] ? @"YES" : @"NO");
+    
+    NSLog(@"Done. Messages sent successfully.");
+    
+    [(Helper*)proxy doCommand:@"test command"];
+    
+}
+
 @end

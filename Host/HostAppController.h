@@ -7,4 +7,6 @@
 
 - (BOOL)blessHelperWithLabel:(NSString *)label error:(NSError **)error;
 
+- (IBAction)sendToHelper:(id)sender;
+
 @end
