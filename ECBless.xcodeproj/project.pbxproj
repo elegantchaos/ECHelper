@@ -374,7 +374,6 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				HOST_ID = "";
 				INFOPLIST_FILE = "Host/Processed-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = host;
@@ -386,9 +385,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				HOST_ID = "";
 				INFOPLIST_FILE = "Host/Processed-Info.plist";
-				INSTALLER_ID = com.elegantchaos.neu.host;
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = host;
 			};
@@ -405,7 +402,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HELPER_ID = com.elegantchaos.neu.helper;
 				HELPER_SIGNING = "3rd Party Mac Developer Application: Sam Deane";
-				INSTALLER_ID = com.elegantchaos.neu.installer;
+				HOST_ID = com.elegantchaos.neu.installer;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
@@ -422,7 +419,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HELPER_ID = com.elegantchaos.neu.helper;
 				HELPER_SIGNING = "3rd Party Mac Developer Application: Sam Deane";
-				INSTALLER_ID = com.elegantchaos.neu.installer;
+				HOST_ID = com.elegantchaos.neu.installer;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 			};
