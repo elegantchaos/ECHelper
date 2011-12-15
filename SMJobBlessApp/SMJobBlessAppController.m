@@ -55,8 +55,11 @@ Copyright (C) 2011 Apple Inc. All Rights Reserved.
 @implementation SMJobBlessAppController
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
+    NSDictionary* helpers = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"SMPrivilegedExecutables"];
+    NSString* helperID = [[helpers allKeys] objectAtIndex:0];
+    
 	NSError *error = nil;
-	if (![self blessHelperWithLabel:@"com.elegantchaos.neu.helper" error:&error]) {
+	if (![self blessHelperWithLabel:helperID error:&error]) {
 		NSLog(@"Something went wrong!");
 	} else {
 		/* At this point, the job is available. However, this is a very
