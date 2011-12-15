@@ -12,7 +12,7 @@
 	<string>1.0</string>
 	<key>SMAuthorizedClients</key>
 	<array>
-		<string>identifier com.elegantchaos.neu.helper and certificate leaf[subject.CN] = &quot;3rd Party Mac Developer Application: Sam Deane&quot;</string>
+		<string>identifier com.elegantchaos.neu.test and certificate leaf[subject.CN] = &quot;3rd Party Mac Developer Application: Sam Deane&quot;</string>
 	</array>
 </dict>
 </plist>
