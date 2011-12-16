@@ -26,9 +26,9 @@ int main(int argc, const char * argv[])
         // use our bundle id as our service name
         NSString* name = [[NSBundle mainBundle] bundleIdentifier];
         const char* name_c = [name UTF8String];
-        aslclient asl = asl_open(name_c, "Daemon", ASL_OPT_STDERR);
-        aslmsg log_msg = asl_new(ASL_TYPE_MSG);
-        asl_set(log_msg, ASL_KEY_SENDER, "SampleD");
+        aslclient aslClient = asl_open(name_c, "Daemon", ASL_OPT_STDERR);
+        aslmsg aslMsg = asl_new(ASL_TYPE_MSG);
+        asl_set(aslMsg, ASL_KEY_SENDER, name_c);
         
         // get the mach port to use from launchd
         mach_port_t mp;
@@ -37,7 +37,7 @@ int main(int argc, const char * argv[])
         kern_return_t result = bootstrap_check_in(bootstrap_port, name_c, &mp);
         if (result != err_none)
         {
-            asl_log(asl, log_msg, ASL_LEVEL_ERR, "unable to get bootstrap port");
+            asl_log(aslClient, aslMsg, ASL_LEVEL_ERR, "unable to get bootstrap port");
             exit(1);
         }
 
@@ -49,12 +49,14 @@ int main(int argc, const char * argv[])
         // make a helper object - this is what we'll publish with the connection
         Helper* helper = [[Helper alloc] init];
         [server setRootObject:helper];
-        asl_log(asl, log_msg, ASL_LEVEL_NOTICE, "helper registered as %s: uid = %d, euid = %d, pid = %d\n", name_c, helper.uid, helper.euid, helper.pid);
+        helper.aslClient = aslClient;
+        helper.aslMsg = aslMsg;
+        asl_log(aslClient, aslMsg, ASL_LEVEL_NOTICE, "helper registered as %s: uid = %d, euid = %d, pid = %d\n", name_c, helper.uid, helper.euid, helper.pid);
 
         // run
         [[NSRunLoop currentRunLoop] run];
 
-        asl_log(asl, log_msg, ASL_LEVEL_NOTICE, "helper finishing");
+        asl_log(aslClient, aslMsg, ASL_LEVEL_NOTICE, "helper finishing");
         [server release];
         [helper release];
     }

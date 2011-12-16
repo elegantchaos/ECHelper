@@ -7,10 +7,13 @@
 //  liberal license: http://www.elegantchaos.com/license/liberal
 // --------------------------------------------------------------------------
 
+#import <asl.h>
 #import <Foundation/Foundation.h>
 
 @interface Helper : NSObject<NSConnectionDelegate>
 
+@property (nonatomic, assign) aslclient aslClient;
+@property (nonatomic, assign) aslmsg aslMsg;
 @property (nonatomic, assign) pid_t pid;
 @property (nonatomic, assign) uid_t uid;
 @property (nonatomic, assign) uid_t euid;

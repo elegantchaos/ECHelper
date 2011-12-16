@@ -12,6 +12,8 @@
 
 @implementation Helper
 
+@synthesize aslClient;
+@synthesize aslMsg;
 @synthesize euid;
 @synthesize pid;
 @synthesize uid;
@@ -30,7 +32,7 @@
 
 - (NSString*)doCommand:(NSString*)command
 {
-	syslog(LOG_NOTICE, "received command: %s", [command UTF8String]);
+	asl_log(aslClient, aslMsg, ASL_LEVEL_NOTICE, "received command: %s", [command UTF8String]);
     
     NSString* result = [NSString stringWithFormat:@"did command: %@", command];
     
