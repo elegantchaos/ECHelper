@@ -25,7 +25,7 @@
 @synthesize pid;
 @synthesize uid;
 
-- (id)initWithName:(NSString *)name mode:(HelperMode)mode
+- (id)initWithName:(NSString *)name
 {
     if ((self = [super init]) != nil)
     {
@@ -37,14 +37,7 @@
         self.aslClient = asl_open(name_c, "Daemon", ASL_OPT_STDERR);
         self.aslMsg = asl_new(ASL_TYPE_MSG);
         asl_set(self.aslMsg, ASL_KEY_SENDER, name_c);
-        if (mode == HelperServer)
-        {
-            asl_log(self.aslClient, aslMsg, ASL_LEVEL_NOTICE, "helper server %s created: uid = %d, euid = %d, pid = %d\n", name_c, self.uid, self.euid, self.pid);
-        }
-        else
-        {
-            asl_log(self.aslClient, self.aslMsg, ASL_LEVEL_NOTICE, "helper client %s created", name_c);
-        }
+        asl_log(self.aslClient, aslMsg, ASL_LEVEL_NOTICE, "helper server %s created: uid = %d, euid = %d, pid = %d\n", name_c, self.uid, self.euid, self.pid);
     }
     
     return self;

@@ -26,7 +26,7 @@ int main(int argc, const char * argv[])
         const char* name_c = [name UTF8String];
 
         // make a helper object - this is what we'll publish with the connection
-        Helper* helper = [[Helper alloc] initWithName:name mode:HelperServer];
+        Helper* helper = [[Helper alloc] initWithName:name];
 
         // get the mach port to use from launchd
         mach_port_t mp;
