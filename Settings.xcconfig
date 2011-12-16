@@ -1,0 +1,22 @@
+// --------------------------------------------------------------------------
+//! @author Sam Deane
+//! @date 15/12/2011
+//
+//  Copyright 2011 Sam Deane, Elegant Chaos. All rights reserved.
+//  This source code is distributed under the terms of Elegant Chaos's 
+//  liberal license: http://www.elegantchaos.com/license/liberal
+// --------------------------------------------------------------------------
+
+// Bundle ID of the helper application
+
+HELPER_ID = com.elegantchaos.helper.helper
+
+// Bundle ID of the host application
+
+HOST_ID = com.elegantchaos.helper.host
+
+// Signing profile to use to sign everything. The name of this is embedded in various places
+// so it's important that they all match. For this reason you need to specify an exact profile
+// name here, rather than a wildcard.
+
+HELPER_SIGNING = 3rd Party Mac Developer Application: Sam Deane

@@ -11,11 +11,11 @@
 		22664215149A9C39003B7019 /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 22664214149A9C39003B7019 /* Helper.m */; };
 		22664216149A9C39003B7019 /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 22664214149A9C39003B7019 /* Helper.m */; };
 		227E2676149B491200E04B27 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 227E2675149B491200E04B27 /* main.m */; };
+		227E267F149B54F900E04B27 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 227E267E149B54F900E04B27 /* AppKit.framework */; };
+		227E2680149B552000E04B27 /* ReadMe.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 22929E3B149A729000E06226 /* ReadMe.markdown */; };
 		4BE4905110445D49006BE471 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE4904D10445D49006BE471 /* main.m */; };
 		4BE4906410445F2F006BE471 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE4906310445F2F006BE471 /* Security.framework */; };
-		4BE4906810445F36006BE471 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE4906710445F36006BE471 /* ServiceManagement.framework */; };
 		4BE49092104463A0006BE471 /* com.elegantchaos.helper.helper in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4BE4905D10445E0A006BE471 /* com.elegantchaos.helper.helper */; };
-		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		BF04235611C0531400431286 /* HostAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF04235511C0531400431286 /* HostAppController.m */; };
 		BF65C19111B985C0007C20AB /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF65C19011B985C0007C20AB /* MainMenu.xib */; };
 /* End PBXBuildFile section */
@@ -53,8 +53,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
-		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		222B290C149A5FFC00DF7EB2 /* Processed-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Processed-Info.plist"; sourceTree = "<group>"; };
 		222B290D149A60ED00DF7EB2 /* Processed-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Processed-Info.plist"; sourceTree = "<group>"; };
 		222B290E149A60ED00DF7EB2 /* Processed-Launchd.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Processed-Launchd.plist"; sourceTree = "<group>"; };
@@ -63,9 +61,9 @@
 		22664213149A9C39003B7019 /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Helper.h; path = Helper/Helper.h; sourceTree = SOURCE_ROOT; };
 		22664214149A9C39003B7019 /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Helper.m; path = Helper/Helper.m; sourceTree = SOURCE_ROOT; };
 		227E2675149B491200E04B27 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Helper/main.m; sourceTree = SOURCE_ROOT; };
+		227E267C149B53AA00E04B27 /* Settings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Settings.xcconfig; sourceTree = "<group>"; };
+		227E267E149B54F900E04B27 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		22929E3B149A729000E06226 /* ReadMe.markdown */ = {isa = PBXFileReference; lastKnownFileType = text; path = ReadMe.markdown; sourceTree = "<group>"; wrapsLines = 1; };
-		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
-		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		4BE4904C10445D49006BE471 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BE4904D10445D49006BE471 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4BE4905310445DDD006BE471 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Helper/Info.plist; sourceTree = "<group>"; };
@@ -92,35 +90,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				227E267F149B54F900E04B27 /* AppKit.framework in Frameworks */,
 				4BE4906410445F2F006BE471 /* Security.framework in Frameworks */,
-				4BE4906810445F36006BE471 /* ServiceManagement.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
-				4BE4906310445F2F006BE471 /* Security.framework */,
-				4BE4906710445F36006BE471 /* ServiceManagement.framework */,
-			);
-			name = "Linked Frameworks";
-			sourceTree = "<group>";
-		};
-		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
-				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
-				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
-			);
-			name = "Other Frameworks";
-			sourceTree = "<group>";
-		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,8 +110,8 @@
 		29B97314FDCFA39411CA2CEA /* SMJobBless */ = {
 			isa = PBXGroup;
 			children = (
-				2266420C149A9634003B7019 /* Foundation.framework */,
 				22929E3B149A729000E06226 /* ReadMe.markdown */,
+				227E267C149B53AA00E04B27 /* Settings.xcconfig */,
 				4BE4905210445DDD006BE471 /* Helper */,
 				4BE4904710445D49006BE471 /* Host */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -156,9 +133,11 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
+				227E267E149B54F900E04B27 /* AppKit.framework */,
+				2266420C149A9634003B7019 /* Foundation.framework */,
+				4BE4906310445F2F006BE471 /* Security.framework */,
+				4BE4906710445F36006BE471 /* ServiceManagement.framework */,
 				224E7D92149A26C60063A520 /* CoreFoundation.framework */,
-				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -263,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF65C19111B985C0007C20AB /* MainMenu.xib in Resources */,
+				227E2680149B552000E04B27 /* ReadMe.markdown in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +387,7 @@
 		};
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 227E267C149B53AA00E04B27 /* Settings.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CODE_SIGN_IDENTITY = "${HELPER_SIGNING}";
@@ -414,9 +395,6 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HELPER_ID = com.elegantchaos.helper.helper;
-				HELPER_SIGNING = "3rd Party Mac Developer Application: Sam Deane";
-				HOST_ID = com.elegantchaos.helper.host;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
@@ -425,15 +403,13 @@
 		};
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 227E267C149B53AA00E04B27 /* Settings.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CODE_SIGN_IDENTITY = "${HELPER_SIGNING}";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HELPER_ID = com.elegantchaos.helper.helper;
-				HELPER_SIGNING = "3rd Party Mac Developer Application: Sam Deane";
-				HOST_ID = com.elegantchaos.helper.host;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 			};

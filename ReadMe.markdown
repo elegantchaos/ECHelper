@@ -12,7 +12,7 @@ The biggest problem with this task is that the helper tool and the host applicat
 
 If you wanted to change these in the SMJobBless example you had to do it in lots of different places - and it was easy to miss one.
 
-This sample gets round that problem by setting three user-defined values at the project level:
+This sample gets round that problem by setting three user-defined values at the project level, in the Settings.xcconfig file:
 
 
     HELPER_ID = com.elegantchaos.helper.helper
@@ -24,7 +24,11 @@ You should set HELPER_ID to the bundle id that you want to use for your helper a
 
 You should set HOST_ID to the bundle id that you want to use for the host application - the one that installs the helper (and which probably makes use of it, although that's not necessarily the case).
 
-You should set HELPER_SIGNING to the code signing profile that you want to use to sign everything. Note that if this profile is associated with a bundle id pattern (eg. com.elegantchaos.*) then the HELPER_ID and HOST_ID settings must match the pattern, otherwise xcode will refuse to sign the applications.
+You should set HELPER_SIGNING to the code signing profile that you want to use to sign everything. Note that if this profile is associated with a bundle id pattern (eg. com.elegantchaos.*) then the HELPER_ID and HOST_ID settings must match the pattern, otherwise xcode will refuse to sign the applications. 
+
+The name of the profile is embedded in various places, and it's important that they all match exactly what's in the certificate. For this reason you need to specify an exact profile name here, rather than a wildcard.
+
+
 
 
 Building The Plists
