@@ -26,7 +26,7 @@ You should set HOST_ID to the bundle id that you want to use for the host applic
 
 You should set HELPER_SIGNING to the code signing profile that you want to use to sign everything. Note that if this profile is associated with a bundle id pattern (eg. com.elegantchaos.*) then the HELPER_ID and HOST_ID settings must match the pattern, otherwise xcode will refuse to sign the applications. 
 
-The name of the profile is embedded in various places, and it's important that they all match exactly what's in the certificate. For this reason you need to specify an exact profile name here, rather than a wildcard.
+The name of the profile is embedded in various places, and it's important that they all match exactly what's in the certificate. For this reason you need to specify an exact profile name here (like "3rd Party Mac Developer Application: Sam Deane"), rather than a wildcard (like "3rd Party Mac Developer Application: *").
 
 
 

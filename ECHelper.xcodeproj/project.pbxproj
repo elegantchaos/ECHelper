@@ -13,6 +13,7 @@
 		227E2676149B491200E04B27 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 227E2675149B491200E04B27 /* main.m */; };
 		227E267F149B54F900E04B27 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 227E267E149B54F900E04B27 /* AppKit.framework */; };
 		227E2680149B552000E04B27 /* ReadMe.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 22929E3B149A729000E06226 /* ReadMe.markdown */; };
+		227E2681149B553E00E04B27 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE4906710445F36006BE471 /* ServiceManagement.framework */; };
 		4BE4905110445D49006BE471 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE4904D10445D49006BE471 /* main.m */; };
 		4BE4906410445F2F006BE471 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE4906310445F2F006BE471 /* Security.framework */; };
 		4BE49092104463A0006BE471 /* com.elegantchaos.helper.helper in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4BE4905D10445E0A006BE471 /* com.elegantchaos.helper.helper */; };
@@ -92,6 +93,7 @@
 			files = (
 				227E267F149B54F900E04B27 /* AppKit.framework in Frameworks */,
 				4BE4906410445F2F006BE471 /* Security.framework in Frameworks */,
+				227E2681149B553E00E04B27 /* ServiceManagement.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
