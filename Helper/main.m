@@ -11,6 +11,8 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <launch.h>
+#include <servers/bootstrap.h>
+#include <mach/mach_init.h>
 
 #import "Helper.h"
 
@@ -20,34 +22,32 @@ int main(int argc, const char * argv[])
 {
     @autoreleasepool
     {
+        // use our bundle id as our service name
         NSString* name = [[NSBundle mainBundle] bundleIdentifier];
+        const char* name_c = [name UTF8String];
+        
+        // get the mach port to use from launchd
+        mach_port_t mp;
+        mach_port_t bootstrap_port;
+        task_get_bootstrap_port(mach_task_self(), &bootstrap_port);
+        kern_return_t result = bootstrap_check_in(bootstrap_port, name_c, &mp);
+        if (result != err_none)
+        {
+            syslog(LOG_NOTICE, "Unable to get bootstrap port");
+            exit(1);
+        }
 
-        launch_data_t checkinRequest = launch_data_new_string(LAUNCH_KEY_CHECKIN);
-        launch_data_t checkinResponse = launch_msg(checkinRequest);
-        launch_data_t machServicesDict = launch_data_dict_lookup(checkinResponse, LAUNCH_JOBKEY_MACHSERVICES);
-        launch_data_t machPort = launch_data_dict_lookup(machServicesDict, [name UTF8String]);
-        
-        mach_port_t mp = launch_data_get_machport(machPort);
-        
-        launch_data_free(checkinResponse);
-        launch_data_free(checkinRequest);
-        
+        // set up the connection
         NSMachPort *receivePort = [[NSMachPort alloc] initWithMachPort:mp];
         NSConnection*server = [NSConnection connectionWithReceivePort:receivePort sendPort:nil];
         [receivePort release];
-        
+
+        // make a helper object - this is what we'll publish with the connection
         Helper* helper = [[Helper alloc] init];
         [server setRootObject:helper];
+        syslog(LOG_NOTICE, "helper registered as %s: uid = %d, euid = %d, pid = %d\n", name_c, helper.uid, helper.euid, helper.pid);
 
-        syslog(LOG_NOTICE, "helper starting! uid = %d, euid = %d, pid = %d\n", helper.uid, helper.euid, helper.pid);
-
-        if ([server registerName:name] == NO)
-        {
-            syslog(LOG_NOTICE, "Unable to register as '%s'. Perhaps another copy of this program is running?", [name UTF8String]);
-            exit(1);
-        }
-        
-        syslog(LOG_NOTICE, "registered as %s", [name UTF8String]);
+        // run
         [[NSRunLoop currentRunLoop] run];
 
         syslog(LOG_NOTICE, "helper finishing");
