@@ -5,8 +5,8 @@ This is based on Apple's SMJobBless example, which shows how to cleanly install 
 
 The original SMJobBless sample is available from http://developer.apple.com/library/mac/#samplecode/SMJobBless/Introduction/Intro.html
 
-What's Different?
------------------
+Staying Consistent
+------------------
 
 The biggest problem with this task is that the helper tool and the host application that's going to install it have to be set up very carefully to have the right code-signing details and bundle ids.
 
@@ -41,3 +41,14 @@ The way I've got round this is to add build scripts to both targets which take t
 In theory these derived plists should probably go into ${DERIVED_FILE_DIR}, so that they are hidden out of the way. 
 
 However, it seems that Xcode needs to be able to find them when the build starts, because they are set as the Info.plist to use for the targets. When I tried hiding them away in the build folder, Xcode couldn't seem to cope, so instead I've added them to the project as "proper" resource files. Each time you build, they'll be regenerated. Luckily though, Xcode (and git) don't see them as having changed unless they actually do change (because you change the values of the variables mentioned above).
+
+Example Helper
+--------------
+
+I've also expanded the example to illustrate one way to actually communicate with the helper application.
+
+This example uses distributed objects, which is *NOT* a particularly secure way to do things. Assuming that your helper is running with enhanced priveleges of some sort, it obviously becomes a potential attack vector for things that are trying to take over your system. DO is big and powerful, and complicated, and thus hard to secure.
+
+In reality you should probably use something simpler, like sending simple bytecode across a NSMachPort or NSSocketPort.
+
+

@@ -10,8 +10,8 @@
 		2266420D149A9634003B7019 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2266420C149A9634003B7019 /* Foundation.framework */; };
 		22664215149A9C39003B7019 /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 22664214149A9C39003B7019 /* Helper.m */; };
 		22664216149A9C39003B7019 /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 22664214149A9C39003B7019 /* Helper.m */; };
+		227E2676149B491200E04B27 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 227E2675149B491200E04B27 /* main.m */; };
 		4BE4905110445D49006BE471 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE4904D10445D49006BE471 /* main.m */; };
-		4BE4906110445E13006BE471 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE4905510445DDD006BE471 /* main.m */; };
 		4BE4906410445F2F006BE471 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE4906310445F2F006BE471 /* Security.framework */; };
 		4BE4906810445F36006BE471 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE4906710445F36006BE471 /* ServiceManagement.framework */; };
 		4BE49092104463A0006BE471 /* com.elegantchaos.helper.helper in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4BE4905D10445E0A006BE471 /* com.elegantchaos.helper.helper */; };
@@ -62,6 +62,7 @@
 		2266420C149A9634003B7019 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		22664213149A9C39003B7019 /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Helper.h; path = Helper/Helper.h; sourceTree = SOURCE_ROOT; };
 		22664214149A9C39003B7019 /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Helper.m; path = Helper/Helper.m; sourceTree = SOURCE_ROOT; };
+		227E2675149B491200E04B27 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Helper/main.m; sourceTree = SOURCE_ROOT; };
 		22929E3B149A729000E06226 /* ReadMe.markdown */ = {isa = PBXFileReference; lastKnownFileType = text; path = ReadMe.markdown; sourceTree = "<group>"; wrapsLines = 1; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
@@ -69,7 +70,6 @@
 		4BE4904D10445D49006BE471 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4BE4905310445DDD006BE471 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Helper/Info.plist; sourceTree = "<group>"; };
 		4BE4905410445DDD006BE471 /* Launchd.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Launchd.plist; path = ../Helper/Launchd.plist; sourceTree = "<group>"; };
-		4BE4905510445DDD006BE471 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4BE4905D10445E0A006BE471 /* com.elegantchaos.helper.helper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = com.elegantchaos.helper.helper; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BE4906310445F2F006BE471 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		4BE4906710445F36006BE471 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
@@ -178,9 +178,9 @@
 		4BE4905210445DDD006BE471 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				227E2675149B491200E04B27 /* main.m */,
 				4BE4905310445DDD006BE471 /* Info.plist */,
 				4BE4905410445DDD006BE471 /* Launchd.plist */,
-				4BE4905510445DDD006BE471 /* main.m */,
 				22664213149A9C39003B7019 /* Helper.h */,
 				22664214149A9C39003B7019 /* Helper.m */,
 				222B290D149A60ED00DF7EB2 /* Processed-Info.plist */,
@@ -308,8 +308,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4BE4906110445E13006BE471 /* main.m in Sources */,
 				22664216149A9C39003B7019 /* Helper.m in Sources */,
+				227E2676149B491200E04B27 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

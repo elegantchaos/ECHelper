@@ -7,12 +7,12 @@
 //  liberal license: http://www.elegantchaos.com/license/liberal
 // --------------------------------------------------------------------------
 
-#include <syslog.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <launch.h>
-#include <servers/bootstrap.h>
-#include <mach/mach_init.h>
+#import <asl.h>
+#import <launch.h>
+#import <mach/mach_init.h>
+#import <servers/bootstrap.h>
+#import <stdio.h>
+#import <unistd.h>
 
 #import "Helper.h"
 
@@ -22,9 +22,13 @@ int main(int argc, const char * argv[])
 {
     @autoreleasepool
     {
+
         // use our bundle id as our service name
         NSString* name = [[NSBundle mainBundle] bundleIdentifier];
         const char* name_c = [name UTF8String];
+        aslclient asl = asl_open(name_c, "Daemon", ASL_OPT_STDERR);
+        aslmsg log_msg = asl_new(ASL_TYPE_MSG);
+        asl_set(log_msg, ASL_KEY_SENDER, "SampleD");
         
         // get the mach port to use from launchd
         mach_port_t mp;
@@ -33,7 +37,7 @@ int main(int argc, const char * argv[])
         kern_return_t result = bootstrap_check_in(bootstrap_port, name_c, &mp);
         if (result != err_none)
         {
-            syslog(LOG_NOTICE, "Unable to get bootstrap port");
+            asl_log(asl, log_msg, ASL_LEVEL_ERR, "unable to get bootstrap port");
             exit(1);
         }
 
@@ -45,12 +49,12 @@ int main(int argc, const char * argv[])
         // make a helper object - this is what we'll publish with the connection
         Helper* helper = [[Helper alloc] init];
         [server setRootObject:helper];
-        syslog(LOG_NOTICE, "helper registered as %s: uid = %d, euid = %d, pid = %d\n", name_c, helper.uid, helper.euid, helper.pid);
+        asl_log(asl, log_msg, ASL_LEVEL_NOTICE, "helper registered as %s: uid = %d, euid = %d, pid = %d\n", name_c, helper.uid, helper.euid, helper.pid);
 
         // run
         [[NSRunLoop currentRunLoop] run];
 
-        syslog(LOG_NOTICE, "helper finishing");
+        asl_log(asl, log_msg, ASL_LEVEL_NOTICE, "helper finishing");
         [server release];
         [helper release];
     }
