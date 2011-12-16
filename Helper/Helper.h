@@ -7,17 +7,23 @@
 //  liberal license: http://www.elegantchaos.com/license/liberal
 // --------------------------------------------------------------------------
 
-#import <asl.h>
 #import <Foundation/Foundation.h>
+
+typedef enum
+{
+    HelperServer,
+    HelperClient
+} HelperMode;
 
 @interface Helper : NSObject<NSConnectionDelegate>
 
-@property (nonatomic, assign) aslclient aslClient;
-@property (nonatomic, assign) aslmsg aslMsg;
 @property (nonatomic, assign) pid_t pid;
 @property (nonatomic, assign) uid_t uid;
 @property (nonatomic, assign) uid_t euid;
 
+- (id)initWithName:(NSString*)name mode:(HelperMode)mode;
+- (void)log:(NSString*)msg;
+- (void)error:(NSString*)msg;
 - (NSString*)doCommand:(NSString*)command;
 
 @end

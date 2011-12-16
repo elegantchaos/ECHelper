@@ -8,7 +8,14 @@
 // --------------------------------------------------------------------------
 
 #import "Helper.h"
+
 #include <syslog.h>
+#import <asl.h>
+
+@interface Helper()
+@property (nonatomic, assign) aslclient aslClient;
+@property (nonatomic, assign) aslmsg aslMsg;
+@end
 
 @implementation Helper
 
@@ -18,16 +25,39 @@
 @synthesize pid;
 @synthesize uid;
 
-- (id)init
+- (id)initWithName:(NSString *)name mode:(HelperMode)mode
 {
     if ((self = [super init]) != nil)
     {
         self.uid = getuid();
         self.euid = geteuid();
         self.pid = getpid();
+
+        const char* name_c = [name UTF8String];
+        self.aslClient = asl_open(name_c, "Daemon", ASL_OPT_STDERR);
+        self.aslMsg = asl_new(ASL_TYPE_MSG);
+        asl_set(self.aslMsg, ASL_KEY_SENDER, name_c);
+        if (mode == HelperServer)
+        {
+            asl_log(self.aslClient, aslMsg, ASL_LEVEL_NOTICE, "helper server %s created: uid = %d, euid = %d, pid = %d\n", name_c, self.uid, self.euid, self.pid);
+        }
+        else
+        {
+            asl_log(self.aslClient, self.aslMsg, ASL_LEVEL_NOTICE, "helper client %s created", name_c);
+        }
     }
     
     return self;
+}
+
+- (void)log:(NSString *)msg
+{
+    asl_log(self.aslClient, self.aslMsg, ASL_LEVEL_NOTICE, "%s", [msg UTF8String]);
+}
+
+- (void)error:(NSString *)msg
+{
+    asl_log(self.aslClient, self.aslMsg, ASL_LEVEL_ERR, "%s", [msg UTF8String]);
 }
 
 - (NSString*)doCommand:(NSString*)command
