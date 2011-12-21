@@ -1,10 +1,13 @@
 #!/bin/sh
 
-# tell the system to unload the helper
-sudo launchctl unload /Library/LaunchDaemons/com.elegantchaos.helper.helper.plist
+base=`dirname $0`
+source "$base/common.sh"
 
-# remove helper
-sudo rm -f /Library/PrivilegedHelperTools/com.elegantchaos.helper.helper 
+# tell the system to unload the injector
+sudo launchctl unload /Library/LaunchDaemons/${BUNDLE}.plist
+
+# remove injector
+sudo rm -f /Library/PrivilegedHelperTools/${BUNDLE} 
 
 # remove launchctl plist
-sudo rm -f /Library/LaunchDaemons/com.elegantchaos.helper.helper.plist
+sudo rm -f /Library/LaunchDaemons/${BUNDLE}.plist
