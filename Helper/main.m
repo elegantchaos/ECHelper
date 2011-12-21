@@ -50,7 +50,6 @@ int main(int argc, const char * argv[])
 
         // cleanup
         [helper log:@"helper finishing"];
-        [server release];
         [helper release];
     }
     
