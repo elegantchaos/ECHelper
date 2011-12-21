@@ -18,6 +18,8 @@
 		2299A6BE14A29B4800729830 /* ECMachPorts.m in Sources */ = {isa = PBXBuildFile; fileRef = 2299A6BD14A29B4800729830 /* ECMachPorts.m */; };
 		2299A6D614A29D1F00729830 /* ECASLClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2299A6D514A29D1F00729830 /* ECASLClient.m */; };
 		2299A6D714A29D1F00729830 /* ECASLClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2299A6D514A29D1F00729830 /* ECASLClient.m */; };
+		2299A6D814A2A10200729830 /* ECMachPorts.m in Sources */ = {isa = PBXBuildFile; fileRef = 2299A6BD14A29B4800729830 /* ECMachPorts.m */; };
+		2299A6D914A2A10200729830 /* ECUnixPorts.m in Sources */ = {isa = PBXBuildFile; fileRef = 2299A6B814A298A800729830 /* ECUnixPorts.m */; };
 		4BE4905110445D49006BE471 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE4904D10445D49006BE471 /* main.m */; };
 		4BE4906410445F2F006BE471 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE4906310445F2F006BE471 /* Security.framework */; };
 		4BE49092104463A0006BE471 /* com.elegantchaos.helper.helper in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4BE4905D10445E0A006BE471 /* com.elegantchaos.helper.helper */; };
@@ -318,6 +320,8 @@
 				22664216149A9C39003B7019 /* Helper.m in Sources */,
 				227E2676149B491200E04B27 /* main.m in Sources */,
 				2299A6D714A29D1F00729830 /* ECASLClient.m in Sources */,
+				2299A6D814A2A10200729830 /* ECMachPorts.m in Sources */,
+				2299A6D914A2A10200729830 /* ECUnixPorts.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

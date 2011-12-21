@@ -16,6 +16,7 @@
 @property (nonatomic, assign) pid_t pid;
 @property (nonatomic, assign) uid_t uid;
 @property (nonatomic, assign) uid_t euid;
+@property (nonatomic, assign) BOOL timeToQuit;
 
 - (id)initWithASL:(ECASLClient*)asl;
 - (NSString*)doCommand:(NSString*)command;

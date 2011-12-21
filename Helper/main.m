@@ -14,12 +14,16 @@
 
 #import <Foundation/Foundation.h>
 
+static const NSTimeInterval kHelperCheckInterval = 1.0; // how often to check whether to quit
+
 int main(int argc, const char * argv[])
 {
     @autoreleasepool
     {
         // use our bundle id as our service name
         NSString* name = [[NSBundle mainBundle] bundleIdentifier];
+        
+        // use ASL for logging
         ECASLClient* asl = [[ECASLClient alloc] initWithName:name];
         
         // make a helper object - this is what we'll publish with the connection
@@ -29,8 +33,12 @@ int main(int argc, const char * argv[])
         NSConnection* server = [NSConnection serviceConnectionUsingBootstrapPortWithName:name rootObject:helper];
         [asl log:@"helper server: %@", server];
         
-        // run
-        [[NSRunLoop currentRunLoop] run];
+        // run until it's time to quit
+        NSRunLoop* rl = [NSRunLoop currentRunLoop];
+        while (!helper.timeToQuit)
+        {
+            [rl runUntilDate:[NSDate dateWithTimeIntervalSinceNow:kHelperCheckInterval]];
+        }
 
         // cleanup
         [asl log:@"helper finishing"];

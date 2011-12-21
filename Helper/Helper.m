@@ -19,6 +19,7 @@
 @synthesize asl;
 @synthesize euid;
 @synthesize pid;
+@synthesize timeToQuit;
 @synthesize uid;
 
 - (id)initWithASL:(ECASLClient*)aslIn

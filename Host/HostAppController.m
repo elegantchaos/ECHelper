@@ -188,16 +188,10 @@
     if (!self.connection)
     {
         // Lookup the server connection
-        NSString* name = @"com.elegantchaos.helper.helper";
-        self.connection = [NSConnection connectionWithRegisteredName:name host:nil];
+        self.connection = [NSConnection connectionWithRegisteredName:self.helperID host:nil];
         if (!self.connection)
         {
-            NSLog(@"%@ server: could not find server.  You need to start one on this machine first.\n", name);
-        }
-        else
-        {
-            [self.connection setRequestTimeout:10.0];
-            [self.connection setReplyTimeout:10.0];
+            NSLog(@"%@ server: could not find server.  You need to start one on this machine first.\n", self.helperID);
         }
     }
 

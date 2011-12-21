@@ -1,10 +1,11 @@
+// --------------------------------------------------------------------------
+//! @author Sam Deane
+//! @date 15/12/2011
 //
-//  ECUnixPort.m
-//  ECHelper
-//
-//  Created by Sam Deane on 21/12/2011.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
-//
+//  Copyright 2011 Sam Deane, Elegant Chaos. All rights reserved.
+//  This source code is distributed under the terms of Elegant Chaos's 
+//  liberal license: http://www.elegantchaos.com/license/liberal
+// --------------------------------------------------------------------------
 
 #import "ECUnixPorts.h"
 

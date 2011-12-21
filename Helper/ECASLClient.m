@@ -38,7 +38,7 @@
     if ((self = [super init]) != nil)
     {
         const char* name_c = [name UTF8String];
-        self.client = asl_open(name_c, "Injector", ASL_OPT_STDERR);
+        self.client = asl_open(name_c, "log", ASL_OPT_STDERR);
         self.msg = asl_new(ASL_TYPE_MSG);
     }
     
