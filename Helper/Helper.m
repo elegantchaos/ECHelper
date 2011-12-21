@@ -8,54 +8,42 @@
 // --------------------------------------------------------------------------
 
 #import "Helper.h"
-
-#include <syslog.h>
-#import <asl.h>
+#import "ECASLClient.h"
 
 @interface Helper()
-@property (nonatomic, assign) aslclient aslClient;
-@property (nonatomic, assign) aslmsg aslMsg;
+@property (nonatomic, retain) ECASLClient* asl;
 @end
 
 @implementation Helper
 
-@synthesize aslClient;
-@synthesize aslMsg;
+@synthesize asl;
 @synthesize euid;
 @synthesize pid;
 @synthesize uid;
 
-- (id)initWithName:(NSString *)name
+- (id)initWithASL:(ECASLClient*)aslIn
 {
     if ((self = [super init]) != nil)
     {
         self.uid = getuid();
         self.euid = geteuid();
         self.pid = getpid();
-
-        const char* name_c = [name UTF8String];
-        self.aslClient = asl_open(name_c, "Daemon", ASL_OPT_STDERR);
-        self.aslMsg = asl_new(ASL_TYPE_MSG);
-        asl_set(self.aslMsg, ASL_KEY_SENDER, name_c);
-        asl_log(self.aslClient, aslMsg, ASL_LEVEL_NOTICE, "helper server %s created: uid = %d, euid = %d, pid = %d\n", name_c, self.uid, self.euid, self.pid);
+        self.asl = aslIn;
     }
     
     return self;
 }
 
-- (void)log:(NSString *)msg
+- (void)dealloc 
 {
-    asl_log(self.aslClient, self.aslMsg, ASL_LEVEL_NOTICE, "%s", [msg UTF8String]);
-}
-
-- (void)error:(NSString *)msg
-{
-    asl_log(self.aslClient, self.aslMsg, ASL_LEVEL_ERR, "%s", [msg UTF8String]);
+    [asl release];
+    
+    [super dealloc];
 }
 
 - (NSString*)doCommand:(NSString*)command
 {
-	asl_log(aslClient, aslMsg, ASL_LEVEL_NOTICE, "received command: %s", [command UTF8String]);
+	[self.asl log:@"received command: %@", command];
     
     NSString* result = [NSString stringWithFormat:@"did command: %@", command];
     

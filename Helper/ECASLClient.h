@@ -9,15 +9,12 @@
 
 #import <Foundation/Foundation.h>
 
-@class ECASLClient;
+@interface ECASLClient : NSObject
 
-@interface Helper : NSObject<NSConnectionDelegate>
+- (id)initWithName:(NSString*)name;
 
-@property (nonatomic, assign) pid_t pid;
-@property (nonatomic, assign) uid_t uid;
-@property (nonatomic, assign) uid_t euid;
-
-- (id)initWithASL:(ECASLClient*)asl;
-- (NSString*)doCommand:(NSString*)command;
+- (void)logAtLevel:(int)level withFormat:(NSString*)format, ... NS_FORMAT_FUNCTION(2,3);
+- (void)log:(NSString*)format, ... NS_FORMAT_FUNCTION(1,2);
+- (void)error:(NSString*)format, ... NS_FORMAT_FUNCTION(1,2);
 
 @end

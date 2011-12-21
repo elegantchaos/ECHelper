@@ -15,6 +15,9 @@
 		227E2680149B552000E04B27 /* ReadMe.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 22929E3B149A729000E06226 /* ReadMe.markdown */; };
 		227E2681149B553E00E04B27 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE4906710445F36006BE471 /* ServiceManagement.framework */; };
 		2299A6B914A298A800729830 /* ECUnixPorts.m in Sources */ = {isa = PBXBuildFile; fileRef = 2299A6B814A298A800729830 /* ECUnixPorts.m */; };
+		2299A6BE14A29B4800729830 /* ECMachPorts.m in Sources */ = {isa = PBXBuildFile; fileRef = 2299A6BD14A29B4800729830 /* ECMachPorts.m */; };
+		2299A6D614A29D1F00729830 /* ECASLClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2299A6D514A29D1F00729830 /* ECASLClient.m */; };
+		2299A6D714A29D1F00729830 /* ECASLClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 2299A6D514A29D1F00729830 /* ECASLClient.m */; };
 		4BE4905110445D49006BE471 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE4904D10445D49006BE471 /* main.m */; };
 		4BE4906410445F2F006BE471 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BE4906310445F2F006BE471 /* Security.framework */; };
 		4BE49092104463A0006BE471 /* com.elegantchaos.helper.helper in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4BE4905D10445E0A006BE471 /* com.elegantchaos.helper.helper */; };
@@ -66,8 +69,12 @@
 		227E267C149B53AA00E04B27 /* Settings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Settings.xcconfig; sourceTree = "<group>"; };
 		227E267E149B54F900E04B27 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		22929E3B149A729000E06226 /* ReadMe.markdown */ = {isa = PBXFileReference; lastKnownFileType = text; path = ReadMe.markdown; sourceTree = "<group>"; wrapsLines = 1; };
-		2299A6B714A298A800729830 /* ECUnixPorts.h */ = {isa = PBXFileReference; fileEncoding = 4; name = ECUnixPorts.h; path = Utilities/ECUnixPorts.h; sourceTree = SOURCE_ROOT; };
+		2299A6B714A298A800729830 /* ECUnixPorts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ECUnixPorts.h; path = Utilities/ECUnixPorts.h; sourceTree = SOURCE_ROOT; };
 		2299A6B814A298A800729830 /* ECUnixPorts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ECUnixPorts.m; path = Utilities/ECUnixPorts.m; sourceTree = SOURCE_ROOT; };
+		2299A6BC14A29B4800729830 /* ECMachPorts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ECMachPorts.h; path = Utilities/ECMachPorts.h; sourceTree = SOURCE_ROOT; };
+		2299A6BD14A29B4800729830 /* ECMachPorts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ECMachPorts.m; path = Utilities/ECMachPorts.m; sourceTree = SOURCE_ROOT; };
+		2299A6D414A29D1F00729830 /* ECASLClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ECASLClient.h; sourceTree = "<group>"; };
+		2299A6D514A29D1F00729830 /* ECASLClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ECASLClient.m; sourceTree = "<group>"; };
 		4BE4904C10445D49006BE471 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BE4904D10445D49006BE471 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4BE4905310445DDD006BE471 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Helper/Info.plist; sourceTree = "<group>"; };
@@ -115,6 +122,10 @@
 		2299A6BB14A298AE00729830 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				2299A6D414A29D1F00729830 /* ECASLClient.h */,
+				2299A6D514A29D1F00729830 /* ECASLClient.m */,
+				2299A6BC14A29B4800729830 /* ECMachPorts.h */,
+				2299A6BD14A29B4800729830 /* ECMachPorts.m */,
 				2299A6B714A298A800729830 /* ECUnixPorts.h */,
 				2299A6B814A298A800729830 /* ECUnixPorts.m */,
 			);
@@ -306,6 +317,7 @@
 			files = (
 				22664216149A9C39003B7019 /* Helper.m in Sources */,
 				227E2676149B491200E04B27 /* main.m in Sources */,
+				2299A6D714A29D1F00729830 /* ECASLClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,6 +329,8 @@
 				BF04235611C0531400431286 /* HostAppController.m in Sources */,
 				22664215149A9C39003B7019 /* Helper.m in Sources */,
 				2299A6B914A298A800729830 /* ECUnixPorts.m in Sources */,
+				2299A6BE14A29B4800729830 /* ECMachPorts.m in Sources */,
+				2299A6D614A29D1F00729830 /* ECASLClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
