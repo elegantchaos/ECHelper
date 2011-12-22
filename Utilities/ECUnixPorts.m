@@ -11,6 +11,8 @@
 
 #import <sys/socket.h>
 #import <sys/un.h>
+#import <launch.h>
+#import <servers/bootstrap.h>
 
 @implementation NSSocketPort(ECUnixPorts)
 
@@ -57,6 +59,49 @@
 @end
 
 @implementation NSConnection(ECUnixPorts)
+
++ (id)serviceConnectionWithBootstrapUnixSocketWithName:(NSString*)name rootObject:(id)root
+{
+    launch_data_t fd = 0;
+    launch_data_t checkin_request = launch_data_new_string(LAUNCH_KEY_CHECKIN);
+    if (checkin_request) 
+    {
+        launch_data_t checkin_response = launch_msg(checkin_request);
+        if (checkin_response) 
+        {
+            if (LAUNCH_DATA_ERRNO != launch_data_get_type(checkin_response)) 
+            {
+                launch_data_t the_label = launch_data_dict_lookup(checkin_response, LAUNCH_JOBKEY_LABEL);
+                if (NULL == the_label) 
+                {
+                }
+                
+                launch_data_t sockets_dict = launch_data_dict_lookup(checkin_response, LAUNCH_JOBKEY_SOCKETS);
+                if (sockets_dict) 
+                {
+                    if (launch_data_dict_get_count(sockets_dict) > 0) 
+                    {
+                        launch_data_t listening_fd_array = launch_data_dict_lookup(sockets_dict, "MyListenerSocket");
+                        if (listening_fd_array) 
+                        {
+                            fd = launch_data_array_get_index(listening_fd_array, 0);
+                        }
+                    }
+                }
+            }
+        }
+	}
+
+    NSConnection* connection = nil;
+    if (fd)
+    {
+        NSSocketPort* receivePort = [[NSSocketPort alloc] initWithProtocolFamily:AF_UNIX socketType:SOCK_STREAM protocol:0 socket:(NSSocketNativeHandle) fd];
+        connection = [NSConnection connectionWithReceivePort:receivePort sendPort:nil];
+        [connection setRootObject:root];
+    }
+    
+    return connection;
+}
 
 + (id)serviceConnectionWithUnixSocketName:(NSString*)name rootObject:(id)root
 {
