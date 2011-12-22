@@ -8,6 +8,7 @@
 // --------------------------------------------------------------------------
 
 #import "ECUnixPorts.h"
+#import "ECASLClient.h"
 
 #import <sys/socket.h>
 #import <sys/un.h>
@@ -62,29 +63,42 @@
 
 + (id)serviceConnectionWithBootstrapUnixSocketWithName:(NSString*)name rootObject:(id)root
 {
+    ECASLClient* asl = [ECASLClient sharedInstance];
+    [asl log:@"in bootstrap"];
+    
     launch_data_t fd = 0;
     launch_data_t checkin_request = launch_data_new_string(LAUNCH_KEY_CHECKIN);
     if (checkin_request) 
     {
+        [asl log:@"got request"];
         launch_data_t checkin_response = launch_msg(checkin_request);
         if (checkin_response) 
         {
-            if (LAUNCH_DATA_ERRNO != launch_data_get_type(checkin_response)) 
+            launch_data_type_t type = launch_data_get_type(checkin_response);
+            [asl log:@"got response type %d", type];
+            if (type != LAUNCH_DATA_ERRNO) 
             {
+                [asl log:@"not error"];
                 launch_data_t the_label = launch_data_dict_lookup(checkin_response, LAUNCH_JOBKEY_LABEL);
-                if (NULL == the_label) 
+                if (the_label) 
                 {
-                }
-                
-                launch_data_t sockets_dict = launch_data_dict_lookup(checkin_response, LAUNCH_JOBKEY_SOCKETS);
-                if (sockets_dict) 
-                {
-                    if (launch_data_dict_get_count(sockets_dict) > 0) 
+                    const char* label = launch_data_get_string(the_label);
+                    [asl log:@"got label %s", label];
+
+                    launch_data_t sockets_dict = launch_data_dict_lookup(checkin_response, LAUNCH_JOBKEY_SOCKETS);
+                    if (sockets_dict) 
                     {
-                        launch_data_t listening_fd_array = launch_data_dict_lookup(sockets_dict, "MyListenerSocket");
-                        if (listening_fd_array) 
+                        size_t count = launch_data_dict_get_count(sockets_dict);
+                        [asl log:@"got dict with count %d", count];
+                        if (count > 0) 
                         {
-                            fd = launch_data_array_get_index(listening_fd_array, 0);
+                            [asl log:@"in bootstrap"];
+                            launch_data_t listening_fd_array = launch_data_dict_lookup(sockets_dict, label);
+                            if (listening_fd_array)
+                            {
+                                [asl log:@"got sockets array"];
+                                fd = launch_data_array_get_index(listening_fd_array, 0);
+                            }
                         }
                     }
                 }

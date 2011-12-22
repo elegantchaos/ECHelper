@@ -96,7 +96,8 @@
     }
     else
     {
-        result = [NSConnection serviceConnectionWithUnixSocketName:name rootObject:self];
+        //        result = [NSConnection serviceConnectionWithUnixSocketName:name rootObject:self];
+        result = [NSConnection serviceConnectionWithBootstrapUnixSocketWithName:name rootObject:self];
     }
     
     return result;

@@ -16,9 +16,12 @@
 
 @end
 
+@class ECASLClient;
+
 @interface NSConnection(ECUnixPorts)
 
 + (id)serviceConnectionWithUnixSocketName:(NSString*)name rootObject:(id)root;
++ (id)serviceConnectionWithBootstrapUnixSocketWithName:(NSString*)name rootObject:(id)root;
 + (id)connectionWithUnixSocketName:(NSString*)name;
 
 + (void)removeUnixSocketName:(NSString*)name;

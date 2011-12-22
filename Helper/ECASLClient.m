@@ -11,6 +11,8 @@
 
 #import <asl.h>
 
+static ECASLClient* gSharedInstance = nil;
+
 @interface ECASLClient()
 
 #pragma mark - Private Properties
@@ -30,6 +32,17 @@
 #pragma mark - Object Lifecycle
 
 // --------------------------------------------------------------------------
+//! If an instance is alive, return a pointer to the first one.
+//! This is a bit of a hacky way of ensuring that code can get
+//! at an ASL client without having to have it passed in.
+// --------------------------------------------------------------------------
+
++ (ECASLClient*)sharedInstance
+{
+    return gSharedInstance;
+}
+
+// --------------------------------------------------------------------------
 //! Set up ASL connection etc.
 // --------------------------------------------------------------------------
 
@@ -40,6 +53,10 @@
         const char* name_c = [name UTF8String];
         self.client = asl_open(name_c, "log", ASL_OPT_STDERR);
         self.msg = asl_new(ASL_TYPE_MSG);
+        if (gSharedInstance == nil)
+        {
+            gSharedInstance = self;
+        }
     }
     
     return self;
@@ -53,6 +70,10 @@
 {
     asl_free(self.msg);
     asl_close(self.client);
+    if (gSharedInstance == self)
+    {
+        gSharedInstance = nil;
+    }
     
     [super dealloc];
 }

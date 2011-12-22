@@ -11,6 +11,7 @@
 
 @interface ECASLClient : NSObject
 
++ (ECASLClient*)sharedInstance;
 - (id)initWithName:(NSString*)name;
 
 - (void)logAtLevel:(int)level withFormat:(NSString*)format, ... NS_FORMAT_FUNCTION(2,3);
