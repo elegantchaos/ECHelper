@@ -97,7 +97,6 @@
     else
     {
         result = [NSConnection serviceConnectionWithUnixSocketName:name rootObject:self];
-        //        [result addRunLoop:[NSRunLoop currentRunLoop]];
     }
     
     return result;
