@@ -8,10 +8,16 @@
 	<true/>
 	<key>OnDemand</key>
 	<true/>
-	<key>MachServices</key>
+	<key>Listeners</key>
 	<dict>
-		<key>com.elegantchaos.helper.helper</key>
-		<true/>
+		<key>SockFamily</key>
+		<string>Unix</string>
+		<key>SockPathName</key>
+		<string>/var/tmp/com.elegantchaos.helper.helper</string>
+		<key>SockPathMode</key>
+		<string>438</string>
+		<key>SockType</key>
+		<string>Stream</string>
 	</dict>
 </dict>
 </plist>

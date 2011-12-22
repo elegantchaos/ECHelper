@@ -8,5 +8,16 @@
 	<true/>
 	<key>OnDemand</key>
 	<true/>
+	<key>Listeners</key>
+	<dict>
+		<key>SockFamily</key>
+		<string>Unix</string>
+		<key>SockPathName</key>
+		<string>/var/tmp/${HELPER_ID}</string>
+		<key>SockPathMode</key>
+		<string>438</string>
+		<key>SockType</key>
+		<string>Stream</string>
+	</dict>
 </dict>
 </plist>
