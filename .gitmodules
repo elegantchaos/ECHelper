@@ -1,0 +1,3 @@
+[submodule "ECFoundation"]
+	path = ECFoundation
+	url = https://github.com/samdeane/ECFoundation
