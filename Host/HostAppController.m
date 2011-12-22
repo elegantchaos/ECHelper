@@ -210,6 +210,10 @@
         {
             NSLog(@"Helper not running on %@ port %@", HELPER_METHOD, self.helperID);
         }
+        else
+        {
+            NSLog(@"Helper connected on %@ port %@", HELPER_METHOD, self.helperID);
+        }
     }
 
     if (self.connection)
