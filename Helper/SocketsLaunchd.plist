@@ -4,20 +4,19 @@
 <dict>
 	<key>Label</key>
 	<string>${HELPER_ID}</string>
-	<key>ServiceIPC</key>
-	<true/>
-	<key>OnDemand</key>
-	<true/>
-	<key>Listeners</key>
+	<key>Sockets</key>
 	<dict>
-		<key>SockFamily</key>
-		<string>Unix</string>
-		<key>SockPathName</key>
-		<string>/var/tmp/${HELPER_ID}</string>
-		<key>SockPathMode</key>
-		<string>438</string>
-		<key>SockType</key>
-		<string>Stream</string>
+		<key>${HELPER_ID}</key>
+		<dict>
+			<key>SockFamily</key>
+			<string>Unix</string>
+			<key>SockPathName</key>
+			<string>/var/tmp/${HELPER_ID}</string>
+			<key>SockPathMode</key>
+			<integer>438</integer>
+			<key>SockType</key>
+			<string>Stream</string>
+		</dict>
 	</dict>
 </dict>
 </plist>
