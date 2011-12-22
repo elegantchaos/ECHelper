@@ -66,7 +66,8 @@
     ECASLClient* asl = [ECASLClient sharedInstance];
     [asl log:@"in bootstrap"];
     
-    launch_data_t fd = 0;
+    int fd = 0;
+
     launch_data_t checkin_request = launch_data_new_string(LAUNCH_KEY_CHECKIN);
     if (checkin_request) 
     {
@@ -92,12 +93,12 @@
                         [asl log:@"got dict with count %d", count];
                         if (count > 0) 
                         {
-                            [asl log:@"in bootstrap"];
                             launch_data_t listening_fd_array = launch_data_dict_lookup(sockets_dict, label);
                             if (listening_fd_array)
                             {
                                 [asl log:@"got sockets array"];
-                                fd = launch_data_array_get_index(listening_fd_array, 0);
+                                launch_data_t fd_data = launch_data_array_get_index(listening_fd_array, 0);
+                                fd = launch_data_get_fd(fd_data);
                             }
                         }
                     }
@@ -105,11 +106,12 @@
             }
         }
 	}
-
+    
     NSConnection* connection = nil;
     if (fd)
     {
-        NSSocketPort* receivePort = [[NSSocketPort alloc] initWithProtocolFamily:AF_UNIX socketType:SOCK_STREAM protocol:0 socket:(NSSocketNativeHandle) fd];
+        [asl log:@"got fd %d", fd];
+        NSSocketPort* receivePort = [[NSSocketPort alloc] initWithProtocolFamily:AF_UNIX socketType:SOCK_STREAM protocol:0 socket:fd];
         connection = [NSConnection connectionWithReceivePort:receivePort sendPort:nil];
         [connection setRootObject:root];
     }
