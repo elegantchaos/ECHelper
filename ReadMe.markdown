@@ -1,14 +1,21 @@
 About ECHelper
 ==============
 
-This is based on Apple's SMJobBless example, which shows how to cleanly install a helper tool that needs to run with privileges as a launchd task.
+This sample illustrates how to install a helper tool that needs to run with privileges as a launchd task, how to have launchd launch the task on demand, and how to communicate with it using IPC.
 
-The original SMJobBless sample is available from http://developer.apple.com/library/mac/#samplecode/SMJobBless/Introduction/Intro.html
+It is based on a mish-mashg of Apple sample code, including SMJobBless, SampleD and CFLocalServer.
+
+The original samples are available from:
+
+- http://developer.apple.com/library/mac/#samplecode/SMJobBless/Introduction/Intro.html
+- http://developer.apple.com/library/mac/#samplecode/SampleD/Introduction/Intro.html
+- http://developer.apple.com/library/mac/#samplecode/CFLocalServer/Introduction/Intro.html
+
 
 Staying Consistent
 ------------------
 
-The biggest problem with this task is that the helper tool and the host application that's going to install it have to be set up very carefully to have the right code-signing details and bundle ids.
+The biggest problem with the installation part of the task is that the helper tool and the host application that's going to install it have to be set up very carefully to have the right code-signing details and bundle ids.
 
 If you wanted to change these in the SMJobBless example you had to do it in lots of different places - and it was easy to miss one.
 
@@ -29,8 +36,6 @@ You should set HELPER_SIGNING to the code signing profile that you want to use t
 The name of the profile is embedded in various places, and it's important that they all match exactly what's in the certificate. For this reason you need to specify an exact profile name here (like "3rd Party Mac Developer Application: Sam Deane"), rather than a wildcard (like "3rd Party Mac Developer Application: *").
 
 
-
-
 Building The Plists
 -------------------
 
@@ -46,20 +51,25 @@ In theory these derived plists should probably go into ${DERIVED_FILE_DIR}, so t
 
 However, it seems that Xcode needs to be able to find them when the build starts, because they are set as the Info.plist to use for the targets. When I tried hiding them away in the build folder, Xcode couldn't seem to cope, so instead I've added them to the project as "proper" resource files. Each time you build, they'll be regenerated. Luckily though, Xcode (and git) don't see them as having changed unless they actually do change (because you change the values of the variables mentioned above).
 
-Example Helper
---------------
 
-I've also expanded the example to illustrate one way to actually communicate with the helper application.
+IPC
+---
 
-This example uses distributed objects, which is *NOT* a particularly secure way to do things. Assuming that your helper is running with enhanced priveleges of some sort, it obviously becomes a potential attack vector for things that are trying to take over your system. DO is big and powerful, and complicated, and thus hard to secure.
+I've also expanded the example to illustrate a couple of ways to actually communicate with the helper application.
+
+The example uses distributed objects, which is *NOT* a particularly secure way to do things since it's quite high level and exposes an actual object interface. 
+
+Assuming that your helper is running with enhanced priveleges of some sort, it obviously becomes a potential attack vector for things that are trying to take over your system. Distributed objects is big and powerful, and complicated, and thus hard to secure.
 
 In reality you should probably use something simpler, like sending simple bytecode across a NSMachPort or NSSocketPort.
 
+In my sample I've illustrated both using Mach ports and using Unix domain sockets. The unix domain sockets approach is apparently recommends, but it was *very* hard to track down enough information to get it to work cleanly, so I hope that this sample gives a few people pointers in the right direction in future...
 
 Scripts
 -------
 
-There are some handy shell scripts included, to start, load, unload and cleanup the helper.
+There are some handy shell scripts included, to start, load, unload and cleanup the helper, and dump out what's going on.
 
-In particular, you should run the cleanup script when you change something. It will remove all trace of the previous helper, ensuring that you test in a clean environment. This script runs some sudo rm commands, so be careful what you do with it!
+In particular, you should run the cleanup script when you change something. It will remove all trace of the previous helper, ensuring that you test in a clean environment. 
+This script runs some sudo rm commands, so be careful what you do with it - if you manage to *really* mess things up and give it the wrong path info it could eat your hard drive!
 
