@@ -9,8 +9,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSConnection(ECMachPorts)
+@interface ECLaunchD : NSObject
 
-+ (id)serviceConnectionWithBootstrapPortName:(NSString*)name rootObject:(id)root;
++ (mach_port_t)bootstrapPortWithName:(NSString*)name;
++ (int)boostrapSocketWithName:(NSString*)name;
 
 @end

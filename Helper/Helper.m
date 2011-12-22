@@ -92,12 +92,12 @@
     NSConnection* result;
     if ([Helper useMachPorts])
     {
-        result = [NSConnection serviceConnectionWithBootstrapPortWithName:name rootObject:self];
+        result = [NSConnection serviceConnectionWithBootstrapPortName:name rootObject:self];
     }
     else
     {
         //        result = [NSConnection serviceConnectionWithUnixSocketName:name rootObject:self];
-        result = [NSConnection serviceConnectionWithBootstrapUnixSocketWithName:name rootObject:self];
+        result = [NSConnection serviceConnectionWithBootstrapUnixSocketName:name rootObject:self];
     }
     
     return result;
