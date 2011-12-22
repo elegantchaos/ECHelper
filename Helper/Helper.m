@@ -9,6 +9,8 @@
 
 #import "Helper.h"
 #import "ECASLClient.h"
+#import "ECMachPorts.h"
+#import "ECUnixPorts.h"
 
 @interface Helper()
 @property (nonatomic, retain) ECASLClient* asl;
@@ -21,6 +23,8 @@
 @synthesize pid;
 @synthesize timeToQuit;
 @synthesize uid;
+
+static const BOOL kUseMachPorts = NO;
 
 - (id)initWithASL:(ECASLClient*)aslIn
 {
@@ -49,6 +53,55 @@
     NSString* result = [NSString stringWithFormat:@"did command: %@", command];
     
     return result;
+}
+
++ (NSConnection*)startClientConnection:(NSString*)name
+{
+    NSConnection* result;
+    if (kUseMachPorts)
+    {
+        result = [NSConnection connectionWithRegisteredName:name host:nil];
+    }
+    else
+    {
+        result = [NSConnection connectionWithUnixSocketName:name];
+    }
+    
+    return result;
+}
+
+- (void)stopClientConnection:(NSConnection*)connection
+{
+    [connection invalidate];
+}
+
+- (NSConnection*)startServerConnection:(NSString*)name
+{
+    // set up the connection
+    NSConnection* result;
+    if (kUseMachPorts)
+    {
+        result = [NSConnection serviceConnectionWithBootstrapPortWithName:name rootObject:self];
+    }
+    else
+    {
+        result = [NSConnection serviceConnectionWithUnixSocketName:name rootObject:self];
+        [result addRunLoop:[NSRunLoop currentRunLoop]];
+    }
+    
+    return result;
+}
+
+- (void)stopServerConnection:(NSConnection*)connection name:(NSString*)name
+{
+    if (kUseMachPorts)
+    {
+        [connection invalidate];
+    }
+    else
+    {
+        [connection invalidateWithUnixSocketName:name];
+    }
 }
 
 @end

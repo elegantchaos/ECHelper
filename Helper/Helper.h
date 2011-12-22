@@ -21,4 +21,10 @@
 - (id)initWithASL:(ECASLClient*)asl;
 - (NSString*)doCommand:(NSString*)command;
 
++ (NSConnection*)startClientConnection:(NSString*)name;
+- (void)stopClientConnection:(NSConnection*)connection;
+
+- (NSConnection*)startServerConnection:(NSString*)name;
+- (void)stopServerConnection:(NSConnection*)connection name:(NSString*)name;
+
 @end

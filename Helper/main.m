@@ -11,6 +11,7 @@
 
 #import "ECASLClient.h"
 #import "ECMachPorts.h"
+#import "ECUnixPorts.h"
 
 #import <Foundation/Foundation.h>
 
@@ -30,17 +31,26 @@ int main(int argc, const char * argv[])
         Helper* helper = [[Helper alloc] initWithASL:asl];
 
         // set up the connection
-        NSConnection* server = [NSConnection serviceConnectionUsingBootstrapPortWithName:name rootObject:helper];
-        [asl log:@"helper server: %@", server];
+        NSConnection* server = [helper startServerConnection:name];
+        if (server)
+        {
+            [asl log:@"made helper server"];
+        }
+        else
+        {
+            [asl error:@"failed to make helper server"];
+        }
         
         // run until it's time to quit
         NSRunLoop* rl = [NSRunLoop currentRunLoop];
         while (!helper.timeToQuit)
         {
+            [asl log:@"tick"];
             [rl runUntilDate:[NSDate dateWithTimeIntervalSinceNow:kHelperCheckInterval]];
         }
 
         // cleanup
+        [helper stopServerConnection:server name:name];
         [asl log:@"helper finishing"];
         [helper release];
         [asl release];

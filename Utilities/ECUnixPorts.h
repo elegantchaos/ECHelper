@@ -11,6 +11,16 @@
 
 @interface NSSocketPort(ECUnixPorts)
 
-- (id)initWithSocketName:(NSString*)name;
++ (NSSocketPort*)clientSocketWithName:(NSString*)name;
++ (NSSocketPort*)serviceSocketWithName:(NSString*)name;
 
+@end
+
+@interface NSConnection(ECUnixPorts)
+
++ (id)serviceConnectionWithUnixSocketName:(NSString*)name rootObject:(id)root;
++ (id)connectionWithUnixSocketName:(NSString*)name;
+
++ (void)removeUnixSocketName:(NSString*)name;
+- (void)invalidateWithUnixSocketName:(NSString*)name;
 @end

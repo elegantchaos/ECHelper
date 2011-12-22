@@ -10,6 +10,7 @@
 #import <ServiceManagement/ServiceManagement.h>
 #import <Security/Authorization.h>
 
+#import "ECUnixPorts.h"
 #import "HostAppController.h"
 #import "Helper.h"
 
@@ -27,6 +28,7 @@
 - (OSStatus)setupAuthorization:(AuthorizationRef*)authRef;
 - (NSError*)installHelperApplication;
 - (void)setStatus:(NSString*)status error:(NSError*)error;
+- (void)updateUI;
 
 @end
 
@@ -64,28 +66,44 @@
 {
     // try to install ("bless") the helper tool
     // this will copy it into the right place and set up the launchd plist (if it isn't already there)
-    NSError* error = [self installHelperApplication];
-	if (!error)
+    Helper* helper = [self helper];
+    if (!helper)
     {
-        // it worked - try to communicate with it
-		[self setStatus:@"Helper is available" error:error];
-        Helper* helper = [self helper];
-        if (helper)
+        NSError* error = [self installHelperApplication];
+        if (!error)
         {
-            // we got a connection to it
-            [self setStatus:[NSString stringWithFormat:@"Helper is running with process id %d", helper.pid] error:error];
+            // it worked - try to communicate with it
+            [self setStatus:@"Helper is available" error:error];
         }
         else
         {
-            // failed to get a connection, that might just be because it's not started
-            [self setStatus:@"Helper is installed, but not running" error:error];
-        }
-	}
+            // it didn't work
+            [self setStatus:@"Helper could not be installed" error:error];
+        } 
+    }
+    
+    [self updateUI];
+}
+
+// --------------------------------------------------------------------------
+//! Refresh the UI.
+// --------------------------------------------------------------------------
+
+- (void)updateUI
+{
+    Helper* helper = [self helper];
+    if (helper)
+    {
+        // we got a connection to it
+        [self setStatus:[NSString stringWithFormat:@"Helper is running with process id %d", helper.pid] error:nil];
+    }
     else
     {
-        // it didn't work
-        [self setStatus:@"Helper could not be installed" error:error];
-	} 
+        // failed to get a connection, that might just be because it's not started
+        [self setStatus:@"Helper is not running" error:nil];
+    }
+    
+    [self performSelector:@selector(updateUI) withObject:nil afterDelay:1.0];
 }
 
 // --------------------------------------------------------------------------
@@ -105,7 +123,6 @@
 
 - (void)setStatus:(NSString*)status error:(NSError*)error;
 {
-    NSLog(@"%@", status);
     [self.label setStringValue:status];
     if (error)
     {
@@ -187,8 +204,7 @@
     
     if (!self.connection)
     {
-        // Lookup the server connection
-        self.connection = [NSConnection connectionWithRegisteredName:self.helperID host:nil];
+        self.connection = [Helper startClientConnection:self.helperID];
         if (!self.connection)
         {
             NSLog(@"%@ server: could not find server.  You need to start one on this machine first.\n", self.helperID);
@@ -197,10 +213,17 @@
 
     if (self.connection)
     {
-        NSDistantObject *proxy = [self.connection rootProxy];
+        NSDistantObject *proxy = nil;
+        @try {
+            proxy = [self.connection rootProxy];
+        }
+        @catch (NSException *exception) {
+        }
+
         if (!proxy) 
         {
             NSLog(@"could not get proxy");
+            self.connection = nil;
         }
         
         helper = (Helper*)proxy;

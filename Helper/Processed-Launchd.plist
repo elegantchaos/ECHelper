@@ -8,10 +8,9 @@
 	<true/>
 	<key>OnDemand</key>
 	<true/>
-	<key>MachServices</key>
-	<dict>
-		<key>com.elegantchaos.helper.helper</key>
-		<true/>
-	</dict>
+	<key>WatchPaths</key>
+	<array>
+		<string>/var/tmp/test.socket</string>
+	</array>
 </dict>
 </plist>

@@ -14,7 +14,7 @@
 
 @implementation NSConnection(ECMachPorts)
 
-+ (id)serviceConnectionUsingBootstrapPortWithName:(NSString*)name rootObject:(id)root
++ (id)serviceConnectionWithBootstrapPortWithName:(NSString*)name rootObject:(id)root
 {
     NSConnection* service = nil;
     mach_port_t mp;
