@@ -4,14 +4,19 @@
 <dict>
 	<key>Label</key>
 	<string>com.elegantchaos.helper.helper</string>
-	<key>ServiceIPC</key>
-	<true/>
-	<key>OnDemand</key>
-	<true/>
-	<key>MachServices</key>
+	<key>Sockets</key>
 	<dict>
 		<key>com.elegantchaos.helper.helper</key>
-		<true/>
+		<dict>
+			<key>SockFamily</key>
+			<string>Unix</string>
+			<key>SockPathName</key>
+			<string>/var/tmp/com.elegantchaos.helper.helper</string>
+			<key>SockPathMode</key>
+			<integer>438</integer>
+			<key>SockType</key>
+			<string>Stream</string>
+		</dict>
 	</dict>
 </dict>
 </plist>

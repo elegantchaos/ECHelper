@@ -21,13 +21,13 @@
 
 @property (nonatomic, retain) NSConnection* connection;
 @property (nonatomic, retain) NSString* helperID;
+@property (nonatomic, retain) NSString* message;
 
 #pragma mark - Private Methods
 
 - (Helper*)helper;
 - (OSStatus)setupAuthorization:(AuthorizationRef*)authRef;
 - (NSError*)installHelperApplication;
-- (void)setStatus:(NSString*)status error:(NSError*)error;
 - (void)updateUI;
 
 @end
@@ -41,6 +41,7 @@
 @synthesize connection;
 @synthesize helperID;
 @synthesize label;
+@synthesize message;
 
 #pragma mark - Object Lifecycle
 
@@ -52,6 +53,7 @@
 {
     [connection release];
     [helperID release];
+    [message release];
     
     [super dealloc];
 }
@@ -71,6 +73,7 @@
 
     // try to install ("bless") the helper tool
     // this will copy it into the right place and set up the launchd plist (if it isn't already there)
+    self.message = @"";
     Helper* helper = [self helper];
     if (!helper)
     {
@@ -78,12 +81,14 @@
         if (!error)
         {
             // it worked - try to communicate with it
-            [self setStatus:@"Helper is available" error:error];
+            self.message = @"Installed Helper";
         }
         else
         {
             // it didn't work
-            [self setStatus:@"Helper could not be installed" error:error];
+            self.message = @"Helper could not be installed";
+            NSLog(@"install failed with error:%@", error);
+            [[NSApplication sharedApplication] presentError:error];
         } 
     }
     
@@ -97,16 +102,20 @@
 - (void)updateUI
 {
     Helper* helper = [self helper];
+    NSString* status;
     if (helper)
     {
         // we got a connection to it
-        [self setStatus:[NSString stringWithFormat:@"Helper is running with process id %d using %@ ports", helper.pid, HELPER_METHOD] error:nil];
+        status = [NSString stringWithFormat:@"Helper is running with process id %d using %@ ports", helper.pid, HELPER_METHOD];
     }
     else
     {
         // failed to get a connection, that might just be because it's not started
-        [self setStatus:@"Helper is not running" error:nil];
+        status = @"Helper is not running";
     }
+    
+    NSString* text = [NSString stringWithFormat:@"%@\n\n%@", status, self.message];
+    [self.label setStringValue:text];
     
     [self performSelector:@selector(updateUI) withObject:nil afterDelay:1.0];
 }
@@ -118,22 +127,6 @@
 - (void)applicationWillTerminate:(NSNotification *)notification
 {
     self.connection = nil;
-}
-
-#pragma mark - Utilities
-
-// --------------------------------------------------------------------------
-//! Update the UI with some status info.
-// --------------------------------------------------------------------------
-
-- (void)setStatus:(NSString*)status error:(NSError*)error;
-{
-    [self.label setStringValue:status];
-    if (error)
-    {
-        NSLog(@"Error: %@", error);
-        [[NSApplication sharedApplication] presentError:error];
-    }
 }
 
 #pragma mark - Installation
@@ -247,11 +240,14 @@
 {
 
     Helper* helper = [self helper];
-    NSLog(@"description: %@", [helper description]);
-    NSLog(@"uid = %d, euid = %d, pid = %d\n", helper.uid, helper.euid, helper.pid);
-    
-    NSString* result = [helper doCommand:@"test command"];
-    NSLog(@"result of command was: %@", result);
+    self.message = 
+    [NSString stringWithFormat:
+     @"description: %@\nuid = %d, euid = %d, pid = %d\nresult:'%@'",
+     [helper description], 
+     helper.uid, helper.euid, helper.pid,
+     [helper doCommand:@"test command"]
+     ];
+    NSLog(@"%@", self.message);
 }
 
 @end
