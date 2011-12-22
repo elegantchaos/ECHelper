@@ -20,3 +20,6 @@ HOST_ID = com.elegantchaos.helper.host
 // name here, rather than a wildcard.
 
 HELPER_SIGNING = 3rd Party Mac Developer Application: Sam Deane
+
+// Set this to Mach to use mach ports, or Sockets to use unix sockets
+HELPER_METHOD = Mach

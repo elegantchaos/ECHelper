@@ -3,14 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>Label</key>
-	<string>com.elegantchaos.helper.helper</string>
+	<string>${HELPER_ID}</string>
 	<key>ServiceIPC</key>
 	<true/>
 	<key>OnDemand</key>
 	<true/>
 	<key>MachServices</key>
 	<dict>
-		<key>com.elegantchaos.helper.helper</key>
+		<key>${HELPER_ID}</key>
 		<true/>
 	</dict>
 </dict>

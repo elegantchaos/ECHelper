@@ -64,6 +64,11 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
+    // look up the helper bundle id in our plist
+    // (we're assuming that it's the one and only key inside the SMPrivilegedExecutables dictionary)
+    NSDictionary* helpers = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"SMPrivilegedExecutables"];
+    self.helperID = [[helpers allKeys] objectAtIndex:0];
+
     // try to install ("bless") the helper tool
     // this will copy it into the right place and set up the launchd plist (if it isn't already there)
     Helper* helper = [self helper];
@@ -95,7 +100,7 @@
     if (helper)
     {
         // we got a connection to it
-        [self setStatus:[NSString stringWithFormat:@"Helper is running with process id %d", helper.pid] error:nil];
+        [self setStatus:[NSString stringWithFormat:@"Helper is running with process id %d using %@ ports", helper.pid, HELPER_METHOD] error:nil];
     }
     else
     {
@@ -163,10 +168,6 @@
 
 - (NSError*)installHelperApplication
 {
-    // look up the helper bundle id in our plist
-    // (we're assuming that it's the one and only key inside the SMPrivilegedExecutables dictionary)
-    NSDictionary* helpers = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"SMPrivilegedExecutables"];
-    self.helperID = [[helpers allKeys] objectAtIndex:0];
 
 	// Obtain the right to install privileged helper tools (kSMRightBlessPrivilegedHelper).
     NSError* error = nil;
@@ -207,7 +208,7 @@
         self.connection = [Helper startClientConnection:self.helperID];
         if (!self.connection)
         {
-            NSLog(@"%@ server: could not find server.  You need to start one on this machine first.\n", self.helperID);
+            NSLog(@"Helper not running on %@ port %@", HELPER_METHOD, self.helperID);
         }
     }
 

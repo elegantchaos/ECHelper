@@ -34,7 +34,7 @@ int main(int argc, const char * argv[])
         NSConnection* server = [helper startServerConnection:name];
         if (server)
         {
-            [asl log:@"made helper server"];
+            [asl log:@"made helper server using %@ ports", HELPER_METHOD];
         }
         else
         {
@@ -45,7 +45,6 @@ int main(int argc, const char * argv[])
         NSRunLoop* rl = [NSRunLoop currentRunLoop];
         while (!helper.timeToQuit)
         {
-            [asl log:@"tick"];
             [rl runUntilDate:[NSDate dateWithTimeIntervalSinceNow:kHelperCheckInterval]];
         }
 

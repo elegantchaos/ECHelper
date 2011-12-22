@@ -56,3 +56,10 @@ This example uses distributed objects, which is *NOT* a particularly secure way 
 In reality you should probably use something simpler, like sending simple bytecode across a NSMachPort or NSSocketPort.
 
 
+Scripts
+-------
+
+There are some handy shell scripts included, to start, load, unload and cleanup the helper.
+
+In particular, you should run the cleanup script when you change something. It will remove all trace of the previous helper, ensuring that you test in a clean environment. This script runs some sudo rm commands, so be careful what you do with it!
+

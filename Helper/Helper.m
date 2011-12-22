@@ -24,7 +24,18 @@
 @synthesize timeToQuit;
 @synthesize uid;
 
-static const BOOL kUseMachPorts = NO;
++ (BOOL)useMachPorts
+{
+    static BOOL inited = NO;
+    static BOOL useMach = NO;
+    if (!inited)
+    {
+        inited = YES;
+        useMach = [HELPER_METHOD isEqualToString:@"Mach"]; // HELPER_METHOD is defined in Settings.xcconfig
+    }
+
+    return useMach;
+}
 
 - (id)initWithASL:(ECASLClient*)aslIn
 {
@@ -58,7 +69,7 @@ static const BOOL kUseMachPorts = NO;
 + (NSConnection*)startClientConnection:(NSString*)name
 {
     NSConnection* result;
-    if (kUseMachPorts)
+    if ([Helper useMachPorts])
     {
         result = [NSConnection connectionWithRegisteredName:name host:nil];
     }
@@ -79,7 +90,7 @@ static const BOOL kUseMachPorts = NO;
 {
     // set up the connection
     NSConnection* result;
-    if (kUseMachPorts)
+    if ([Helper useMachPorts])
     {
         result = [NSConnection serviceConnectionWithBootstrapPortWithName:name rootObject:self];
     }
@@ -94,7 +105,7 @@ static const BOOL kUseMachPorts = NO;
 
 - (void)stopServerConnection:(NSConnection*)connection name:(NSString*)name
 {
-    if (kUseMachPorts)
+    if ([Helper useMachPorts])
     {
         [connection invalidate];
     }

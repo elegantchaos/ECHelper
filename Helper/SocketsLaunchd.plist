@@ -8,14 +8,5 @@
 	<true/>
 	<key>OnDemand</key>
 	<true/>
-	<key>WatchPaths</key>
-	<array>
-		<string>/var/tmp/test.socket</string>
-	</array>
-	<key>MachServices</key>
-	<dict>
-		<key>${HELPER_ID}</key>
-		<true/>
-	</dict>
 </dict>
 </plist>
