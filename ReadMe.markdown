@@ -65,6 +65,17 @@ In reality you should probably use something simpler, like sending simple byteco
 
 In my sample I've illustrated both using Mach ports and using Unix domain sockets. The unix domain sockets approach is apparently recommends, but it was *very* hard to track down enough information to get it to work cleanly, so I hope that this sample gives a few people pointers in the right direction in future...
 
+The IPC method that you choose is determined by a fourth setting:
+
+    HELPER_METHOD = Mach
+    
+or
+
+    HELPER_METHOD = Sockets
+    
+This changes the launchd plist that gets used, and also filters through into the code to change the IPC method at runtime.
+
+    
 Scripts
 -------
 
